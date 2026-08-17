@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm add *)",
+      "Bash(pnpm build *)",
+      "Skill(run)",
+      "Skill(run:*)",
+      "Bash(pnpm dev *)",
+      "Bash(npx chromium-cli *)",
+      "Bash(node -e ' *)",
+      "Read(//Applications/**)",
+      "Bash(mdfind \"kMDItemCFBundleIdentifier == 'com.google.Chrome'\")",
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=new --disable-gpu --window-size=390,844 --screenshot=/tmp/sc-mobile.png http://localhost:5174/step-challenge/)",
+      "Bash(echo \"exit: $?\")",
+      "Read(//tmp/**)",
+      "Read(//private/tmp/**)",
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=new --disable-gpu --window-size=390,844 --screenshot=/tmp/sc-v6.png http://localhost:5174/step-challenge/)",
+      "Bash(node -e \"const b = require\\('@base-ui/react'\\); console.log\\(Object.keys\\(b\\)\\)\")"
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "generatedAt": "2026-07-07T03:00:00.000Z",
+  "weekLabels": ["Week 1", "Week 2", "Week 3", "Week 4"],
+  "teams": [
+    { "teamName": "The Speedy Sneakers", "rankChange": 2,  "weeklySteps": [{"label":"Week 1","steps":52000},{"label":"Week 2","steps":61000},{"label":"Week 3","steps":58000},{"label":"Week 4","steps":70000}], "total": 241000 },
+    { "teamName": "Walking Dead",        "rankChange": 0,  "weeklySteps": [{"label":"Week 1","steps":48000},{"label":"Week 2","steps":55000},{"label":"Week 3","steps":60000},{"label":"Week 4","steps":65000}], "total": 228000 },
+    { "teamName": "Step Bros",           "rankChange": -1, "weeklySteps": [{"label":"Week 1","steps":45000},{"label":"Week 2","steps":50000},{"label":"Week 3","steps":53000},{"label":"Week 4","steps":62000}], "total": 210000 },
+    { "teamName": "Fitbit Fanatics",     "rankChange": 1,  "weeklySteps": [{"label":"Week 1","steps":40000},{"label":"Week 2","steps":44000},{"label":"Week 3","steps":48000},{"label":"Week 4","steps":55000}], "total": 187000 },
+    { "teamName": "Sole Survivors",      "rankChange": -2, "weeklySteps": [{"label":"Week 1","steps":35000},{"label":"Week 2","steps":38000},{"label":"Week 3","steps":42000},{"label":"Week 4","steps":45000}], "total": 160000 },
+    { "teamName": "Pavement Pounders",   "rankChange": 0,  "weeklySteps": [{"label":"Week 1","steps":30000},{"label":"Week 2","steps":34000},{"label":"Week 3","steps":38000},{"label":"Week 4","steps":40000}], "total": 142000 },
+    { "teamName": "Happy Feet",          "rankChange": 3,  "weeklySteps": [{"label":"Week 1","steps":28000},{"label":"Week 2","steps":31000},{"label":"Week 3","steps":33000},{"label":"Week 4","steps":36000}], "total": 128000 },
+    { "teamName": "Blister Sisters",     "rankChange": -1, "weeklySteps": [{"label":"Week 1","steps":25000},{"label":"Week 2","steps":27000},{"label":"Week 3","steps":29000},{"label":"Week 4","steps":30000}], "total": 111000 },
+    { "teamName": "Office Walkers",      "rankChange": null, "weeklySteps": [{"label":"Week 1","steps":20000},{"label":"Week 2","steps":22000},{"label":"Week 3","steps":25000},{"label":"Week 4","steps":27000}], "total": 94000 },
+    { "teamName": "Elevator Avoiders",   "rankChange": -2, "weeklySteps": [{"label":"Week 1","steps":16000},{"label":"Week 2","steps":18000},{"label":"Week 3","steps":20000},{"label":"Week 4","steps":22000}], "total": 76000 }
+  ]
+}
