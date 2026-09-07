@@ -233,7 +233,7 @@ export default function App() {
 
           {/* FAQ tab */}
           <Tabs.Panel value="faq">
-            <Accordion.Root className="space-y-2">
+            <Accordion.Root multiple className="space-y-2">
               {FAQ.map((item) => (
                 <Accordion.Item
                   key={item.q}
