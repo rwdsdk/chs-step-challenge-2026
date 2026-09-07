@@ -25,12 +25,8 @@ const FAQ: { q: string; a: string }[] = [
     a: 'Teams are ranked by their cumulative total steps across all weeks. In case of a tie, the team with more steps in the latest week ranks higher.',
   },
   {
-    q: 'Can I join mid-challenge?',
-    a: 'Yes! Contact your team captain or the challenge organiser. Steps only count from the week you join.',
-  },
-  {
-    q: 'What counts as a step?',
-    a: 'Any steps tracked by a fitness device or phone pedometer count. Indoor walking, treadmill, and outdoor walking/running all qualify.',
+    q: 'How often is the leaderboard updated?',
+    a: "Depends on admin's availability, as we still have to manually extract the data from the StepUp app - but we will try to keep a consistent schedule.",
   },
 ];
 
