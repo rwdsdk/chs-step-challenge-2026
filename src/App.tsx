@@ -16,7 +16,11 @@ const FAQ: { q: string; a: string }[] = [
   },
   {
     q: 'Why is the step breakdown different from my StepUp app?',
-    a: 'One common reason is that the data is exported before some team members have synced their latest steps to the StepUp app. The exported data is a snapshot of the step counts at the time of export, so it may not reflect the most recent data from your app. It should sync within the next update cycle, but if you notice a persistent discrepancy, please reach out to the admins.',
+    a: "Two likely reasons: some team members hadn't synced their latest steps to StepUp before the admin exported the data for that update, which happens if you only open the app occasionally. It should resolve once you sync and the leaderboard updates again in the next cycle. The other reason is that every team includes admins whose job is to track progress and export the numbers for the leaderboard, so their own steps are deliberately left out of the team total even though they're on the roster. If your numbers still don't add up after accounting for both of these, let the admins know so they can check.",
+  },
+  {
+    q: "Are admins' steps counted in the leaderboard?",
+    a: "No. Admins are part of the team roster so they can monitor progress and export step data for the leaderboard, but their own steps are intentionally excluded from their team's total to keep scoring fair.",
   },
   {
     q: 'How often is the leaderboard updated?',
