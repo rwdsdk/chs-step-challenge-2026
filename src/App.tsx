@@ -12,11 +12,11 @@ const FAQ: { q: string; a: string }[] = [
   },
   {
     q: 'Why are my steps not updated?',
-    a: 'The StepUp app reads from Apple Health or Google Fit. Make sure your phone is syncing steps to Apple Health or Google Fit, then open the StepUp app and sync to push your latest data.',
+    a: 'The StepUp app reads from Apple Health or Google Fit. Make sure your phone is syncing steps to Apple Health or Google Fit, then open the StepUp app and sync to push your latest data. Please sync at least once a week to ensure your steps are counted in the challenge.',
   },
   {
-    q: 'How are teams ranked?',
-    a: 'Teams are ranked by their cumulative total steps across all weeks. In case of a tie, the team with more steps in the latest week ranks higher.',
+    q: 'Why is the step count breakdown different from my StepUp app?',
+    a: 'One common reason is that the data is exported before some team members have synced their latest steps to the StepUp app. The exported data is a snapshot of the step counts at the time of export, so it may not reflect the most recent data from your app. It should sync within the next update cycle, but if you notice a persistent discrepancy, please reach out to the admins.',
   },
   {
     q: 'How often is the leaderboard updated?',
