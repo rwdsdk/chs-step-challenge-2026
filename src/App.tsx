@@ -299,7 +299,7 @@ export default function App() {
           </Tabs.Panel>
 
           {/* FAQ tab */}
-          <Tabs.Panel value="faq">
+          <Tabs.Panel value="faq" keepMounted>
             <Accordion.Root multiple className="space-y-2">
               {FAQ.map((item) => (
                 <Accordion.Item
