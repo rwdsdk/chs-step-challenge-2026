@@ -17,6 +17,7 @@
     { "teamName": "KADENS", "rankChange": null, "weeklySteps": [{"label":"Week 1","steps":0},{"label":"Week 2","steps":0},{"label":"Week 3","steps":0},{"label":"Week 4","steps":0}], "total": 0 },
     { "teamName": "AlgoRhythm", "rankChange": null, "weeklySteps": [{"label":"Week 1","steps":0},{"label":"Week 2","steps":0},{"label":"Week 3","steps":0},{"label":"Week 4","steps":0}], "total": 0 },
     { "teamName": "The halal Guys", "rankChange": null, "weeklySteps": [{"label":"Week 1","steps":0},{"label":"Week 2","steps":0},{"label":"Week 3","steps":0},{"label":"Week 4","steps":0}], "total": 0 },
-    { "teamName": "Sole Mates", "rankChange": null, "weeklySteps": [{"label":"Week 1","steps":0},{"label":"Week 2","steps":0},{"label":"Week 3","steps":0},{"label":"Week 4","steps":0}], "total": 0 }
+    { "teamName": "Sole Mates", "rankChange": null, "weeklySteps": [{"label":"Week 1","steps":0},{"label":"Week 2","steps":0},{"label":"Week 3","steps":0},{"label":"Week 4","steps":0}], "total": 0 },
+    { "teamName": "Gummy Bears", "rankChange": null, "weeklySteps": [{"label":"Week 1","steps":0},{"label":"Week 2","steps":0},{"label":"Week 3","steps":0},{"label":"Week 4","steps":0}], "total": 0 }
   ]
 }
