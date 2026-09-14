@@ -242,7 +242,7 @@ export default function App() {
                           <div className="mt-1.5 flex items-center justify-center gap-1">
                             {thisWeekSteps !== null && (
                               <span className="text-[10px] tabular-nums text-muted-foreground">
-                                {formatSteps(thisWeekSteps)} this wk
+                                {formatSteps(thisWeekSteps)} this week
                               </span>
                             )}
                             <RankChangeBadge change={team.rankChange} />
