@@ -154,15 +154,13 @@ function TeamDetailPanel({ team, activeWeekIdx, onClose, exiting }: { team: Team
                   <Gift className="w-3 h-3" />+{formatSteps(bonus)}
                 </span>
               ) : null}
-              {idx === activeWeekIdx && <RankChangeBadge change={team.rankChange} />}
             </span>
             <span className="tabular-nums">{formatSteps(steps)}</span>
           </div>
         ))}
         <div className="flex items-center justify-between text-sm font-bold text-foreground pt-2 border-t border-border">
           <span>Total</span>
-          <span className="tabular-nums flex items-center gap-1">
-            <RankChangeBadge change={team.rankChange} />
+          <span className="tabular-nums">
             {formatSteps(team.total)}
           </span>
         </div>
@@ -272,9 +270,9 @@ export default function App() {
                         key={team.teamName}
                         type="button"
                         onClick={() => toggleExpanded(team.teamName)}
-                        className={`relative flex flex-col items-center rounded-3xl bg-card shadow-sm text-center min-w-0 overflow-hidden cursor-pointer transition-shadow duration-150 ${
+                        className={`relative flex flex-col items-center rounded-3xl bg-card shadow-sm text-center min-w-0 overflow-hidden cursor-pointer transition-shadow duration-150 pb-8 ${
                           isExpanded ? 'ring-2 ring-primary' : ''
-                        } ${isFirst ? 'px-2.5 pt-7 pb-5' : 'px-2.5 pt-5 pb-4'}`}
+                        } ${isFirst ? 'px-2.5 pt-7' : 'px-2.5 pt-5'}`}
                       >
                         {bonusWeekIndex(team) !== null && (
                           <span className="absolute top-3 right-3">
@@ -294,9 +292,9 @@ export default function App() {
                           steps
                         </span>
                         {(thisWeekSteps !== null || (team.rankChange != null && team.rankChange !== 0)) && (
-                          <div className="mt-1.5 flex items-center justify-center gap-1">
+                          <div className="absolute inset-x-0 bottom-3 flex items-center justify-center gap-1">
                             {thisWeekSteps !== null && (
-                              <span className="text-[10px] tabular-nums text-muted-foreground">
+                              <span className="text-[9px] tabular-nums text-muted-foreground">
                                 {formatSteps(thisWeekSteps)} this week
                               </span>
                             )}
@@ -332,15 +330,15 @@ export default function App() {
                             {i + 4}
                           </span>
                           <div className="flex-1 min-w-0">
-                            <div className="flex items-center gap-1.5">
-                              <p className="text-sm font-semibold text-foreground leading-snug line-clamp-2 wrap-break-word min-w-0">{team.teamName}</p>
-                              {bonusWeekIndex(team) !== null && (
-                                <BonusIcon weekIdx={bonusWeekIndex(team) ?? 0} />
-                              )}
-                              <RankChangeBadge change={team.rankChange} />
-                            </div>
-                            {thisWeekSteps !== null && (
-                              <p className="text-xs text-muted-foreground tabular-nums mt-0.5">{formatSteps(thisWeekSteps)} this week</p>
+                            <p className="text-sm font-semibold text-foreground leading-snug line-clamp-2 wrap-break-word min-w-0">{team.teamName}</p>
+                            {(thisWeekSteps !== null || bonusWeekIndex(team) !== null || (team.rankChange != null && team.rankChange !== 0)) && (
+                              <p className="flex items-center gap-1.5 text-xs text-muted-foreground tabular-nums mt-0.5">
+                                {thisWeekSteps !== null && <span>{formatSteps(thisWeekSteps)} this week</span>}
+                                <RankChangeBadge change={team.rankChange} />
+                                {bonusWeekIndex(team) !== null && (
+                                  <Gift className={`w-3 h-3 ${WEEK_BONUS_COLORS[bonusWeekIndex(team) ?? 0].icon}`} />
+                                )}
+                              </p>
                             )}
                           </div>
                           <div className="text-right shrink-0">
