@@ -1,7 +1,7 @@
 import { Fragment, useState } from 'react';
 import { Tabs } from '@base-ui/react/tabs';
 import { Accordion } from '@base-ui/react/accordion';
-import { ArrowUp, ArrowDown, ChevronDown, X } from 'lucide-react';
+import { ArrowUp, ArrowDown, ChevronDown, Gift, X } from 'lucide-react';
 import { useLeaderboard, type TeamRow } from '@/hooks/useLeaderboard';
 import { CHALLENGE_NAME, CHALLENGE_MONTH, CHALLENGE_START, CHALLENGE_END } from '@/config';
 
@@ -29,6 +29,10 @@ const FAQ: { q: string; a: string }[] = [
   {
     q: 'How can I see the detailed breakdown for my team?',
     a: "Tap any team's card or row in the Rankings list to expand its week-by-week step breakdown.",
+  },
+  {
+    q: 'What does the small badge icon next to some teams mean?',
+    a: "It means that team was awarded bonus steps for completing a weekly event. Its color matches the week the bonus applied to. Tap the team to open its breakdown and see the exact amount.",
   },
 ];
 
@@ -83,6 +87,32 @@ const MEDAL_BADGE: Record<number, string> = {
   3: 'bg-linear-to-br from-[#c68a4e] to-[#8b5e34] text-white shadow-sm',
 };
 
+const WEEK_BONUS_COLORS = [
+  { grad: 'to-amber-50/70', ring: 'ring-amber-300/50', icon: 'text-amber-600' },
+  { grad: 'to-sky-50/70', ring: 'ring-sky-300/50', icon: 'text-sky-600' },
+  { grad: 'to-violet-50/70', ring: 'ring-violet-300/50', icon: 'text-violet-600' },
+  { grad: 'to-rose-50/70', ring: 'ring-rose-300/50', icon: 'text-rose-600' },
+];
+
+function bonusWeekIndex(team: TeamRow): number | null {
+  for (let i = team.weeklySteps.length - 1; i >= 0; i--) {
+    if (team.weeklySteps[i].bonus) return i;
+  }
+  return null;
+}
+
+function BonusIcon({ size = 'w-4 h-4', weekIdx = 0 }: { size?: string; weekIdx?: number }) {
+  const palette = WEEK_BONUS_COLORS[weekIdx % WEEK_BONUS_COLORS.length];
+  return (
+    <span
+      className={`inline-flex items-center justify-center shrink-0 rounded-full bg-linear-to-b from-white/90 ${palette.grad} ring-1 ${palette.ring} shadow-sm ${size}`}
+      aria-label="Includes bonus steps"
+    >
+      <Gift className={`w-2.5 h-2.5 ${palette.icon}`} />
+    </span>
+  );
+}
+
 function RankNumeral({ rank, large }: { rank: number; large?: boolean }) {
   return (
     <span
@@ -110,12 +140,22 @@ function TeamDetailPanel({ team, activeWeekIdx, onClose, exiting }: { team: Team
         </button>
       </div>
       <div className="px-4 py-3 space-y-2">
-        {team.weeklySteps.map(({ label, steps }, idx) => (
+        {team.weeklySteps.map(({ label, steps, bonus }, idx) => (
           <div
             key={label}
             className={`flex items-center justify-between text-sm ${idx === activeWeekIdx ? 'font-semibold text-foreground' : 'text-muted-foreground'}`}
           >
-            <span>{label}</span>
+            <span className="flex items-center gap-1.5">
+              {label}
+              {bonus ? (
+                <span
+                  className={`inline-flex items-center gap-0.5 leading-none text-[10px] font-semibold ${WEEK_BONUS_COLORS[idx % WEEK_BONUS_COLORS.length].icon} bg-linear-to-b from-white/90 ${WEEK_BONUS_COLORS[idx % WEEK_BONUS_COLORS.length].grad} ring-1 ${WEEK_BONUS_COLORS[idx % WEEK_BONUS_COLORS.length].ring} shadow-sm px-1.5 py-1 rounded-full`}
+                >
+                  <Gift className="w-3 h-3" />+{formatSteps(bonus)}
+                </span>
+              ) : null}
+              {idx === activeWeekIdx && <RankChangeBadge change={team.rankChange} />}
+            </span>
             <span className="tabular-nums">{formatSteps(steps)}</span>
           </div>
         ))}
@@ -232,10 +272,15 @@ export default function App() {
                         key={team.teamName}
                         type="button"
                         onClick={() => toggleExpanded(team.teamName)}
-                        className={`flex flex-col items-center rounded-3xl bg-card shadow-sm text-center min-w-0 overflow-hidden cursor-pointer transition-shadow duration-150 ${
+                        className={`relative flex flex-col items-center rounded-3xl bg-card shadow-sm text-center min-w-0 overflow-hidden cursor-pointer transition-shadow duration-150 ${
                           isExpanded ? 'ring-2 ring-primary' : ''
                         } ${isFirst ? 'px-2.5 pt-7 pb-5' : 'px-2.5 pt-5 pb-4'}`}
                       >
+                        {bonusWeekIndex(team) !== null && (
+                          <span className="absolute top-3 right-3">
+                            <BonusIcon size="w-4 h-4" weekIdx={bonusWeekIndex(team) ?? 0} />
+                          </span>
+                        )}
                         <RankNumeral rank={rank} large={isFirst} />
                         <div className="mt-2 min-h-8 flex items-center justify-center w-full px-1">
                           <span className={`leading-snug line-clamp-2 wrap-break-word min-w-0 text-foreground ${isFirst ? 'text-sm font-bold' : 'text-xs font-semibold'}`}>
@@ -287,8 +332,11 @@ export default function App() {
                             {i + 4}
                           </span>
                           <div className="flex-1 min-w-0">
-                            <div className="flex items-start gap-1.5">
+                            <div className="flex items-center gap-1.5">
                               <p className="text-sm font-semibold text-foreground leading-snug line-clamp-2 wrap-break-word min-w-0">{team.teamName}</p>
+                              {bonusWeekIndex(team) !== null && (
+                                <BonusIcon weekIdx={bonusWeekIndex(team) ?? 0} />
+                              )}
                               <RankChangeBadge change={team.rankChange} />
                             </div>
                             {thisWeekSteps !== null && (
