@@ -229,7 +229,7 @@ export default function App() {
                         } ${isFirst ? 'px-2.5 pt-7 pb-5' : 'px-2.5 pt-5 pb-4'}`}
                       >
                         <RankNumeral rank={rank} large={isFirst} />
-                        <span className={`mt-2 leading-snug line-clamp-2 min-h-8 flex items-center justify-center w-full px-1 text-foreground ${isFirst ? 'text-sm font-bold' : 'text-xs font-semibold'}`}>
+                        <span className={`mt-2 leading-snug line-clamp-2 wrap-break-word min-h-8 w-full px-1 text-foreground ${isFirst ? 'text-sm font-bold' : 'text-xs font-semibold'}`}>
                           {team.teamName}
                         </span>
                         <span className={`mt-1.5 font-bold tabular-nums text-foreground ${isFirst ? 'text-2xl' : 'text-lg'}`}>
@@ -278,7 +278,7 @@ export default function App() {
                           </span>
                           <div className="flex-1 min-w-0">
                             <div className="flex items-start gap-1.5">
-                              <p className="text-sm font-semibold text-foreground leading-snug line-clamp-2 min-w-0">{team.teamName}</p>
+                              <p className="text-sm font-semibold text-foreground leading-snug line-clamp-2 wrap-break-word min-w-0">{team.teamName}</p>
                               <RankChangeBadge change={team.rankChange} />
                             </div>
                             {thisWeekSteps !== null && (
