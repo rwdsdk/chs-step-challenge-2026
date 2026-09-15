@@ -36,6 +36,14 @@ function formatSteps(n: number): string {
   return n.toLocaleString();
 }
 
+function podiumStepsTextSize(total: number, large: boolean): string {
+  const digits = formatSteps(total).length;
+  const sizes = large ? ['text-2xl', 'text-xl', 'text-lg'] : ['text-lg', 'text-base', 'text-sm'];
+  if (digits <= 6) return sizes[0];
+  if (digits <= 8) return sizes[1];
+  return sizes[2];
+}
+
 function formatDate(d: Date): string {
   return d.toLocaleDateString(undefined, {
     month: 'short', day: 'numeric', year: 'numeric',
@@ -229,10 +237,12 @@ export default function App() {
                         } ${isFirst ? 'px-2.5 pt-7 pb-5' : 'px-2.5 pt-5 pb-4'}`}
                       >
                         <RankNumeral rank={rank} large={isFirst} />
-                        <span className={`mt-2 leading-snug line-clamp-2 wrap-break-word min-h-8 w-full px-1 text-foreground ${isFirst ? 'text-sm font-bold' : 'text-xs font-semibold'}`}>
-                          {team.teamName}
-                        </span>
-                        <span className={`mt-1.5 font-bold tabular-nums text-foreground ${isFirst ? 'text-2xl' : 'text-lg'}`}>
+                        <div className="mt-2 min-h-8 flex items-center justify-center w-full px-1">
+                          <span className={`leading-snug line-clamp-2 wrap-break-word min-w-0 text-foreground ${isFirst ? 'text-sm font-bold' : 'text-xs font-semibold'}`}>
+                            {team.teamName}
+                          </span>
+                        </div>
+                        <span className={`mt-1.5 font-bold tabular-nums text-foreground ${podiumStepsTextSize(team.total, isFirst)}`}>
                           {formatSteps(team.total)}
                         </span>
                         <span className="text-[9px] font-medium uppercase tracking-wide -mt-0.5 text-muted-foreground">
