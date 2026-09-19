@@ -120,6 +120,13 @@ for (const row of regRows) {
       for (const t of tokenize(emailMatch[1].replace(/[._-]/g, ' '))) tokens.add(t);
     }
   }
+  // The team captain is sometimes the main contact but isn't repeated in the
+  // members list — without this, they'd wrongly show as "unmatched to roster"
+  // every run even though they're legitimately on the team.
+  const captainKey = Object.keys(row).find((k) => k.startsWith('Team Captain') && k.includes('Full Name'));
+  if (captainKey) {
+    for (const t of tokenize(String(row[captainKey] ?? ''))) tokens.add(t);
+  }
   teamTokenSets.set(teamName, tokens);
 }
 
