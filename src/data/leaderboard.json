@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-21T00:18:30.977Z",
+  "generatedAt": "2026-09-22T01:34:47.290Z",
   "weekLabels": [
     "Week 1",
     "Week 2",
@@ -12,13 +12,13 @@
       "weeklySteps": [
         {
           "label": "Week 1",
-          "steps": 621382,
+          "steps": 621409,
           "bonus": 10000,
           "bonusLabel": "Completed weekly event"
         },
         {
           "label": "Week 2",
-          "steps": 0
+          "steps": 67002
         },
         {
           "label": "Week 3",
@@ -29,7 +29,7 @@
           "steps": 0
         }
       ],
-      "total": 621382,
+      "total": 688411,
       "rankChange": 0
     },
     {
@@ -37,13 +37,13 @@
       "weeklySteps": [
         {
           "label": "Week 1",
-          "steps": 619781,
+          "steps": 620281,
           "bonus": 10000,
           "bonusLabel": "Completed weekly event"
         },
         {
           "label": "Week 2",
-          "steps": 0
+          "steps": 67351
         },
         {
           "label": "Week 3",
@@ -54,7 +54,7 @@
           "steps": 0
         }
       ],
-      "total": 619781,
+      "total": 687632,
       "rankChange": 0
     },
     {
@@ -62,11 +62,11 @@
       "weeklySteps": [
         {
           "label": "Week 1",
-          "steps": 574048
+          "steps": 577148
         },
         {
           "label": "Week 2",
-          "steps": 0
+          "steps": 60887
         },
         {
           "label": "Week 3",
@@ -77,7 +77,7 @@
           "steps": 0
         }
       ],
-      "total": 574048,
+      "total": 638035,
       "rankChange": 0
     },
     {
@@ -85,13 +85,13 @@
       "weeklySteps": [
         {
           "label": "Week 1",
-          "steps": 541965,
+          "steps": 542088,
           "bonus": 10000,
           "bonusLabel": "Completed weekly event"
         },
         {
           "label": "Week 2",
-          "steps": 0
+          "steps": 70524
         },
         {
           "label": "Week 3",
@@ -102,7 +102,7 @@
           "steps": 0
         }
       ],
-      "total": 541965,
+      "total": 612612,
       "rankChange": 0
     },
     {
@@ -110,13 +110,13 @@
       "weeklySteps": [
         {
           "label": "Week 1",
-          "steps": 495426,
+          "steps": 495633,
           "bonus": 10000,
           "bonusLabel": "Completed weekly event"
         },
         {
           "label": "Week 2",
-          "steps": 0
+          "steps": 65057
         },
         {
           "label": "Week 3",
@@ -127,7 +127,7 @@
           "steps": 0
         }
       ],
-      "total": 495426,
+      "total": 560690,
       "rankChange": 0
     },
     {
@@ -135,11 +135,11 @@
       "weeklySteps": [
         {
           "label": "Week 1",
-          "steps": 476450
+          "steps": 476753
         },
         {
           "label": "Week 2",
-          "steps": 0
+          "steps": 54021
         },
         {
           "label": "Week 3",
@@ -150,7 +150,7 @@
           "steps": 0
         }
       ],
-      "total": 476450,
+      "total": 530774,
       "rankChange": 0
     },
     {
@@ -158,13 +158,13 @@
       "weeklySteps": [
         {
           "label": "Week 1",
-          "steps": 457639,
+          "steps": 457791,
           "bonus": 10000,
           "bonusLabel": "Completed weekly event"
         },
         {
           "label": "Week 2",
-          "steps": 0
+          "steps": 62671
         },
         {
           "label": "Week 3",
@@ -175,46 +175,21 @@
           "steps": 0
         }
       ],
-      "total": 457639,
+      "total": 520462,
       "rankChange": 0
-    },
-    {
-      "teamName": "AlgoRhythm",
-      "weeklySteps": [
-        {
-          "label": "Week 1",
-          "steps": 436659,
-          "bonus": 10000,
-          "bonusLabel": "Completed weekly event"
-        },
-        {
-          "label": "Week 2",
-          "steps": 0
-        },
-        {
-          "label": "Week 3",
-          "steps": 0
-        },
-        {
-          "label": "Week 4",
-          "steps": 0
-        }
-      ],
-      "total": 436659,
-      "rankChange": 1
     },
     {
       "teamName": "The halal Guys",
       "weeklySteps": [
         {
           "label": "Week 1",
-          "steps": 418710,
+          "steps": 418726,
           "bonus": 10000,
           "bonusLabel": "Completed weekly event"
         },
         {
           "label": "Week 2",
-          "steps": 0
+          "steps": 73127
         },
         {
           "label": "Week 3",
@@ -225,7 +200,32 @@
           "steps": 0
         }
       ],
-      "total": 418710,
+      "total": 491853,
+      "rankChange": 1
+    },
+    {
+      "teamName": "AlgoRhythm",
+      "weeklySteps": [
+        {
+          "label": "Week 1",
+          "steps": 436779,
+          "bonus": 10000,
+          "bonusLabel": "Completed weekly event"
+        },
+        {
+          "label": "Week 2",
+          "steps": 48671
+        },
+        {
+          "label": "Week 3",
+          "steps": 0
+        },
+        {
+          "label": "Week 4",
+          "steps": 0
+        }
+      ],
+      "total": 485450,
       "rankChange": -1
     },
     {
@@ -233,11 +233,11 @@
       "weeklySteps": [
         {
           "label": "Week 1",
-          "steps": 392337
+          "steps": 392354
         },
         {
           "label": "Week 2",
-          "steps": 0
+          "steps": 41928
         },
         {
           "label": "Week 3",
@@ -248,7 +248,7 @@
           "steps": 0
         }
       ],
-      "total": 392337,
+      "total": 434282,
       "rankChange": 0
     },
     {
@@ -256,11 +256,11 @@
       "weeklySteps": [
         {
           "label": "Week 1",
-          "steps": 329698
+          "steps": 345127
         },
         {
           "label": "Week 2",
-          "steps": 0
+          "steps": 38408
         },
         {
           "label": "Week 3",
@@ -271,7 +271,7 @@
           "steps": 0
         }
       ],
-      "total": 329698,
+      "total": 383535,
       "rankChange": 0
     },
     {
@@ -279,13 +279,13 @@
       "weeklySteps": [
         {
           "label": "Week 1",
-          "steps": 285842,
+          "steps": 292683,
           "bonus": 10000,
           "bonusLabel": "Completed weekly event"
         },
         {
           "label": "Week 2",
-          "steps": 0
+          "steps": 31084
         },
         {
           "label": "Week 3",
@@ -296,7 +296,32 @@
           "steps": 0
         }
       ],
-      "total": 285842,
+      "total": 323767,
+      "rankChange": 0
+    },
+    {
+      "teamName": "ULTRAmarathoners",
+      "weeklySteps": [
+        {
+          "label": "Week 1",
+          "steps": 278805,
+          "bonus": 10000,
+          "bonusLabel": "Completed weekly event"
+        },
+        {
+          "label": "Week 2",
+          "steps": 40180
+        },
+        {
+          "label": "Week 3",
+          "steps": 0
+        },
+        {
+          "label": "Week 4",
+          "steps": 0
+        }
+      ],
+      "total": 318985,
       "rankChange": 1
     },
     {
@@ -304,11 +329,11 @@
       "weeklySteps": [
         {
           "label": "Week 1",
-          "steps": 282557
+          "steps": 284100
         },
         {
           "label": "Week 2",
-          "steps": 0
+          "steps": 16677
         },
         {
           "label": "Week 3",
@@ -319,46 +344,21 @@
           "steps": 0
         }
       ],
-      "total": 282557,
-      "rankChange": 1
-    },
-    {
-      "teamName": "ULTRAmarathoners",
-      "weeklySteps": [
-        {
-          "label": "Week 1",
-          "steps": 277469,
-          "bonus": 10000,
-          "bonusLabel": "Completed weekly event"
-        },
-        {
-          "label": "Week 2",
-          "steps": 0
-        },
-        {
-          "label": "Week 3",
-          "steps": 0
-        },
-        {
-          "label": "Week 4",
-          "steps": 0
-        }
-      ],
-      "total": 277469,
-      "rankChange": -2
+      "total": 300777,
+      "rankChange": -1
     },
     {
       "teamName": "Sole Mates",
       "weeklySteps": [
         {
           "label": "Week 1",
-          "steps": 264932,
+          "steps": 265005,
           "bonus": 10000,
           "bonusLabel": "Completed weekly event"
         },
         {
           "label": "Week 2",
-          "steps": 0
+          "steps": 16186
         },
         {
           "label": "Week 3",
@@ -369,7 +369,7 @@
           "steps": 0
         }
       ],
-      "total": 264932,
+      "total": 281191,
       "rankChange": 0
     },
     {
@@ -377,13 +377,13 @@
       "weeklySteps": [
         {
           "label": "Week 1",
-          "steps": 220642,
+          "steps": 221366,
           "bonus": 10000,
           "bonusLabel": "Completed weekly event"
         },
         {
           "label": "Week 2",
-          "steps": 0
+          "steps": 29137
         },
         {
           "label": "Week 3",
@@ -394,7 +394,7 @@
           "steps": 0
         }
       ],
-      "total": 220642,
+      "total": 250503,
       "rankChange": 0
     },
     {
@@ -402,11 +402,11 @@
       "weeklySteps": [
         {
           "label": "Week 1",
-          "steps": 132182
+          "steps": 134103
         },
         {
           "label": "Week 2",
-          "steps": 0
+          "steps": 16585
         },
         {
           "label": "Week 3",
@@ -417,7 +417,7 @@
           "steps": 0
         }
       ],
-      "total": 132182,
+      "total": 150688,
       "rankChange": 0
     }
   ]

@@ -89,26 +89,40 @@ const MEDAL_BADGE: Record<number, string> = {
 
 const WEEK_BONUS_COLORS = [
   { grad: 'to-amber-50/70', ring: 'ring-amber-300/50', icon: 'text-amber-600' },
-  { grad: 'to-sky-50/70', ring: 'ring-sky-300/50', icon: 'text-sky-600' },
+  { grad: 'to-pink-50/70', ring: 'ring-pink-300/50', icon: 'text-pink-600' },
   { grad: 'to-violet-50/70', ring: 'ring-violet-300/50', icon: 'text-violet-600' },
   { grad: 'to-rose-50/70', ring: 'ring-rose-300/50', icon: 'text-rose-600' },
 ];
 
-function bonusWeekIndex(team: TeamRow): number | null {
-  for (let i = team.weeklySteps.length - 1; i >= 0; i--) {
-    if (team.weeklySteps[i].bonus) return i;
-  }
-  return null;
+function bonusWeekIndices(team: TeamRow): number[] {
+  return team.weeklySteps.reduce<number[]>((acc, w, i) => {
+    if (w.bonus) acc.push(i);
+    return acc;
+  }, []);
 }
 
-function BonusIcon({ size = 'w-4 h-4', weekIdx = 0 }: { size?: string; weekIdx?: number }) {
-  const palette = WEEK_BONUS_COLORS[weekIdx % WEEK_BONUS_COLORS.length];
+function BonusStack({ weekIndices, size = 16 }: { weekIndices: number[]; size?: number }) {
+  if (weekIndices.length === 0) return null;
+  // Most recent week leads (leftmost, on top); older weeks trail behind it to
+  // the right, each mostly hidden except for a sliver — same convention as an
+  // avatar stack where the primary item sits in front.
+  // Overlap is proportional to the circle's own diameter (not a fixed px
+  // value) so the stack looks the same at every size it's used at.
+  const newestFirst = [...weekIndices].reverse();
   return (
-    <span
-      className={`inline-flex items-center justify-center shrink-0 rounded-full bg-linear-to-b from-white/90 ${palette.grad} ring-1 ${palette.ring} shadow-sm ${size}`}
-      aria-label="Includes bonus steps"
-    >
-      <Gift className={`w-2.5 h-2.5 ${palette.icon}`} />
+    <span className="inline-flex items-center shrink-0" aria-label="Includes bonus steps">
+      {newestFirst.map((weekIdx, i) => {
+        const palette = WEEK_BONUS_COLORS[weekIdx % WEEK_BONUS_COLORS.length];
+        return (
+          <span
+            key={weekIdx}
+            className={`inline-flex items-center justify-center shrink-0 rounded-full border-2 border-card ring-1 ${palette.ring} shadow-sm bg-linear-to-b from-white/90 ${palette.grad}`}
+            style={{ width: size, height: size, marginLeft: i > 0 ? -size * 0.65 : 0, zIndex: newestFirst.length - i }}
+          >
+            <Gift className={palette.icon} style={{ width: Math.round(size * 0.6), height: Math.round(size * 0.6) }} />
+          </span>
+        );
+      })}
     </span>
   );
 }
@@ -274,9 +288,9 @@ export default function App() {
                           isExpanded ? 'ring-2 ring-primary' : ''
                         } ${isFirst ? 'px-2.5 pt-7' : 'px-2.5 pt-5'}`}
                       >
-                        {bonusWeekIndex(team) !== null && (
+                        {bonusWeekIndices(team).length > 0 && (
                           <span className="absolute top-3 right-3">
-                            <BonusIcon size="w-4 h-4" weekIdx={bonusWeekIndex(team) ?? 0} />
+                            <BonusStack weekIndices={bonusWeekIndices(team)} size={16} />
                           </span>
                         )}
                         <RankNumeral rank={rank} large={isFirst} />
@@ -331,13 +345,11 @@ export default function App() {
                           </span>
                           <div className="flex-1 min-w-0">
                             <p className="text-sm font-semibold text-foreground leading-snug line-clamp-2 wrap-break-word min-w-0">{team.teamName}</p>
-                            {(thisWeekSteps !== null || bonusWeekIndex(team) !== null || (team.rankChange != null && team.rankChange !== 0)) && (
+                            {(thisWeekSteps !== null || bonusWeekIndices(team).length > 0 || (team.rankChange != null && team.rankChange !== 0)) && (
                               <p className="flex items-center gap-1.5 text-xs text-muted-foreground tabular-nums mt-0.5">
                                 {thisWeekSteps !== null && <span>{formatSteps(thisWeekSteps)} this week</span>}
                                 <RankChangeBadge change={team.rankChange} />
-                                {bonusWeekIndex(team) !== null && (
-                                  <Gift className={`w-3 h-3 ${WEEK_BONUS_COLORS[bonusWeekIndex(team) ?? 0].icon}`} />
-                                )}
+                                <BonusStack weekIndices={bonusWeekIndices(team)} size={14} />
                               </p>
                             )}
                           </div>
