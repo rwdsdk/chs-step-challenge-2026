@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-26T03:07:23.038Z",
+  "generatedAt": "2026-09-27T01:22:43.958Z",
   "weekLabels": [
     "Week 1",
     "Week 2",
@@ -18,7 +18,7 @@
         },
         {
           "label": "Week 2",
-          "steps": 460137,
+          "steps": 572267,
           "bonus": 15000,
           "bonusLabel": "Completed weekly event"
         },
@@ -31,7 +31,7 @@
           "steps": 0
         }
       ],
-      "total": 1080644,
+      "total": 1192774,
       "rankChange": 0
     },
     {
@@ -45,7 +45,7 @@
         },
         {
           "label": "Week 2",
-          "steps": 388027,
+          "steps": 530795,
           "bonus": 15000,
           "bonusLabel": "Completed weekly event"
         },
@@ -58,7 +58,7 @@
           "steps": 0
         }
       ],
-      "total": 1009502,
+      "total": 1152270,
       "rankChange": 0
     },
     {
@@ -72,7 +72,7 @@
         },
         {
           "label": "Week 2",
-          "steps": 395632,
+          "steps": 511372,
           "bonus": 15000,
           "bonusLabel": "Completed weekly event"
         },
@@ -85,55 +85,7 @@
           "steps": 0
         }
       ],
-      "total": 894132,
-      "rankChange": 1
-    },
-    {
-      "teamName": "KADENS",
-      "weeklySteps": [
-        {
-          "label": "Week 1",
-          "steps": 577148
-        },
-        {
-          "label": "Week 2",
-          "steps": 309363
-        },
-        {
-          "label": "Week 3",
-          "steps": 0
-        },
-        {
-          "label": "Week 4",
-          "steps": 0
-        }
-      ],
-      "total": 886511,
-      "rankChange": -1
-    },
-    {
-      "teamName": "Walkie Talkies",
-      "weeklySteps": [
-        {
-          "label": "Week 1",
-          "steps": 542439,
-          "bonus": 10000,
-          "bonusLabel": "Completed weekly event"
-        },
-        {
-          "label": "Week 2",
-          "steps": 320798
-        },
-        {
-          "label": "Week 3",
-          "steps": 0
-        },
-        {
-          "label": "Week 4",
-          "steps": 0
-        }
-      ],
-      "total": 863237,
+      "total": 1009872,
       "rankChange": 0
     },
     {
@@ -147,7 +99,7 @@
         },
         {
           "label": "Week 2",
-          "steps": 429070,
+          "steps": 532792,
           "bonus": 15000,
           "bonusLabel": "Completed weekly event"
         },
@@ -160,8 +112,56 @@
           "steps": 0
         }
       ],
-      "total": 861924,
+      "total": 965646,
+      "rankChange": 2
+    },
+    {
+      "teamName": "Walkie Talkies",
+      "weeklySteps": [
+        {
+          "label": "Week 1",
+          "steps": 542439,
+          "bonus": 10000,
+          "bonusLabel": "Completed weekly event"
+        },
+        {
+          "label": "Week 2",
+          "steps": 419226
+        },
+        {
+          "label": "Week 3",
+          "steps": 0
+        },
+        {
+          "label": "Week 4",
+          "steps": 0
+        }
+      ],
+      "total": 961665,
       "rankChange": 0
+    },
+    {
+      "teamName": "KADENS",
+      "weeklySteps": [
+        {
+          "label": "Week 1",
+          "steps": 577148
+        },
+        {
+          "label": "Week 2",
+          "steps": 381523
+        },
+        {
+          "label": "Week 3",
+          "steps": 0
+        },
+        {
+          "label": "Week 4",
+          "steps": 0
+        }
+      ],
+      "total": 958671,
+      "rankChange": -2
     },
     {
       "teamName": "So High!",
@@ -172,7 +172,7 @@
         },
         {
           "label": "Week 2",
-          "steps": 321820,
+          "steps": 384719,
           "bonus": 15000,
           "bonusLabel": "Completed weekly event"
         },
@@ -185,7 +185,7 @@
           "steps": 0
         }
       ],
-      "total": 798641,
+      "total": 861540,
       "rankChange": 0
     },
     {
@@ -199,7 +199,7 @@
         },
         {
           "label": "Week 2",
-          "steps": 309042
+          "steps": 382461
         },
         {
           "label": "Week 3",
@@ -210,7 +210,7 @@
           "steps": 0
         }
       ],
-      "total": 766881,
+      "total": 840300,
       "rankChange": 0
     },
     {
@@ -224,7 +224,7 @@
         },
         {
           "label": "Week 2",
-          "steps": 287836,
+          "steps": 338888,
           "bonus": 15000,
           "bonusLabel": "Completed weekly event"
         },
@@ -237,7 +237,7 @@
           "steps": 0
         }
       ],
-      "total": 724741,
+      "total": 775793,
       "rankChange": 0
     },
     {
@@ -249,7 +249,7 @@
         },
         {
           "label": "Week 2",
-          "steps": 257858
+          "steps": 319386
         },
         {
           "label": "Week 3",
@@ -260,7 +260,7 @@
           "steps": 0
         }
       ],
-      "total": 607343,
+      "total": 668871,
       "rankChange": 0
     },
     {
@@ -272,7 +272,7 @@
         },
         {
           "label": "Week 2",
-          "steps": 200987
+          "steps": 239526
         },
         {
           "label": "Week 3",
@@ -283,62 +283,8 @@
           "steps": 0
         }
       ],
-      "total": 597770,
+      "total": 636309,
       "rankChange": 0
-    },
-    {
-      "teamName": "Cache Me If You Can",
-      "weeklySteps": [
-        {
-          "label": "Week 1",
-          "steps": 295154,
-          "bonus": 10000,
-          "bonusLabel": "Completed weekly event"
-        },
-        {
-          "label": "Week 2",
-          "steps": 206954,
-          "bonus": 15000,
-          "bonusLabel": "Completed weekly event"
-        },
-        {
-          "label": "Week 3",
-          "steps": 0
-        },
-        {
-          "label": "Week 4",
-          "steps": 0
-        }
-      ],
-      "total": 502108,
-      "rankChange": 1
-    },
-    {
-      "teamName": "Sole Mates",
-      "weeklySteps": [
-        {
-          "label": "Week 1",
-          "steps": 265494,
-          "bonus": 10000,
-          "bonusLabel": "Completed weekly event"
-        },
-        {
-          "label": "Week 2",
-          "steps": 222428,
-          "bonus": 15000,
-          "bonusLabel": "Completed weekly event"
-        },
-        {
-          "label": "Week 3",
-          "steps": 0
-        },
-        {
-          "label": "Week 4",
-          "steps": 0
-        }
-      ],
-      "total": 487922,
-      "rankChange": 1
     },
     {
       "teamName": "ULTRAmarathoners",
@@ -351,7 +297,7 @@
         },
         {
           "label": "Week 2",
-          "steps": 203895,
+          "steps": 254432,
           "bonus": 15000,
           "bonusLabel": "Completed weekly event"
         },
@@ -364,19 +310,23 @@
           "steps": 0
         }
       ],
-      "total": 482700,
-      "rankChange": -2
+      "total": 533237,
+      "rankChange": 2
     },
     {
-      "teamName": "Sugar Spice & Stride",
+      "teamName": "Cache Me If You Can",
       "weeklySteps": [
         {
           "label": "Week 1",
-          "steps": 285647
+          "steps": 295154,
+          "bonus": 10000,
+          "bonusLabel": "Completed weekly event"
         },
         {
           "label": "Week 2",
-          "steps": 185983
+          "steps": 237755,
+          "bonus": 15000,
+          "bonusLabel": "Completed weekly event"
         },
         {
           "label": "Week 3",
@@ -387,7 +337,57 @@
           "steps": 0
         }
       ],
-      "total": 471630,
+      "total": 532909,
+      "rankChange": -1
+    },
+    {
+      "teamName": "Sole Mates",
+      "weeklySteps": [
+        {
+          "label": "Week 1",
+          "steps": 265494,
+          "bonus": 10000,
+          "bonusLabel": "Completed weekly event"
+        },
+        {
+          "label": "Week 2",
+          "steps": 256951,
+          "bonus": 15000,
+          "bonusLabel": "Completed weekly event"
+        },
+        {
+          "label": "Week 3",
+          "steps": 0
+        },
+        {
+          "label": "Week 4",
+          "steps": 0
+        }
+      ],
+      "total": 522445,
+      "rankChange": -1
+    },
+    {
+      "teamName": "Sugar Spice & Stride",
+      "weeklySteps": [
+        {
+          "label": "Week 1",
+          "steps": 285647
+        },
+        {
+          "label": "Week 2",
+          "steps": 216932
+        },
+        {
+          "label": "Week 3",
+          "steps": 0
+        },
+        {
+          "label": "Week 4",
+          "steps": 0
+        }
+      ],
+      "total": 502579,
       "rankChange": 0
     },
     {
@@ -401,7 +401,7 @@
         },
         {
           "label": "Week 2",
-          "steps": 177655
+          "steps": 227150
         },
         {
           "label": "Week 3",
@@ -412,7 +412,7 @@
           "steps": 0
         }
       ],
-      "total": 424391,
+      "total": 473886,
       "rankChange": 0
     },
     {
@@ -424,7 +424,7 @@
         },
         {
           "label": "Week 2",
-          "steps": 123049
+          "steps": 152254
         },
         {
           "label": "Week 3",
@@ -435,7 +435,7 @@
           "steps": 0
         }
       ],
-      "total": 285652,
+      "total": 314857,
       "rankChange": 0
     }
   ]
