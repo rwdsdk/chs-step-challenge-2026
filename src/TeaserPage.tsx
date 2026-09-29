@@ -1,134 +1,119 @@
-import { useEffect, useMemo, useState } from 'react';
-import { motion } from 'motion/react';
-import { useLeaderboard } from '@/hooks/useLeaderboard';
+import { useHazeData, type RegionReadings } from '@/hooks/useHazeData';
+import { psiBand } from '@/lib/psiBands';
 import { CHALLENGE_NAME } from '@/config';
 
-// Mockup only — not wired to the real reveal date yet.
-const REVEAL_AT = new Date('2026-10-12T00:00:00+08:00');
-const SCRAMBLE_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+const REGION_LABELS: Record<string, string> = {
+  north: 'North',
+  south: 'South',
+  east: 'East',
+  west: 'West',
+  central: 'Central',
+};
 
-function useCountdown(target: Date) {
-  const [now, setNow] = useState(() => new Date());
-  useEffect(() => {
-    const id = setInterval(() => setNow(new Date()), 1000);
-    return () => clearInterval(id);
-  }, []);
-  const diff = Math.max(0, target.getTime() - now.getTime());
-  return {
-    days: Math.floor(diff / 86400000),
-    hours: Math.floor(diff / 3600000) % 24,
-    minutes: Math.floor(diff / 60000) % 60,
-    seconds: Math.floor(diff / 1000) % 60,
-  };
+const REGION_ORDER = ['north', 'south', 'east', 'west', 'central'];
+
+function highestRegion(readings: RegionReadings): string | null {
+  const entries = Object.entries(readings);
+  if (entries.length === 0) return null;
+  return entries.reduce((a, b) => (b[1] > a[1] ? b : a))[0];
 }
 
-// Classic decode effect: reveals `text` left-to-right through random characters
-// whenever it changes. Purely decorative — never used on the live countdown
-// itself, which needs to stay clean and readable every second.
-function ScrambleText({ text, className }: { text: string; className?: string }) {
-  const [display, setDisplay] = useState(text);
-
-  useEffect(() => {
-    let frame = 0;
-    const totalFrames = 14;
-    const id = setInterval(() => {
-      frame++;
-      if (frame >= totalFrames) {
-        setDisplay(text);
-        clearInterval(id);
-        return;
-      }
-      const revealCount = Math.floor((frame / totalFrames) * text.length);
-      setDisplay(
-        text
-          .split('')
-          .map((ch, i) => (ch === ' ' || i < revealCount ? ch : SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)]))
-          .join('')
-      );
-    }, 35);
-    return () => clearInterval(id);
-  }, [text]);
-
-  return <span className={className}>{display}</span>;
+function formatTimestamp(iso: string): string {
+  return new Date(iso).toLocaleString(undefined, {
+    weekday: 'short', hour: 'numeric', minute: '2-digit',
+  });
 }
 
-function ScrambleSpotlight({ items }: { items: string[] }) {
-  const [item, setItem] = useState(() => items[Math.floor(Math.random() * items.length)]);
-  useEffect(() => {
-    const id = setInterval(() => setItem(items[Math.floor(Math.random() * items.length)]), 5000);
-    return () => clearInterval(id);
-  }, [items]);
-  return <ScrambleText text={item} className="text-lg font-semibold tracking-wide" />;
-}
-
-function TickerRow({
-  names,
-  duration,
-  reverse,
-  className,
-}: {
-  names: string[];
-  duration: number;
-  reverse?: boolean;
-  className: string;
-}) {
-  const doubled = [...names, ...names];
+function PsiRow({ region, value, isHighest }: { region: string; value: number; isHighest: boolean }) {
+  const band = psiBand(value);
   return (
-    <div className={`absolute left-0 w-full overflow-hidden ${className}`}>
-      <motion.div
-        className="flex gap-12 whitespace-nowrap w-max"
-        animate={{ x: reverse ? ['-50%', '0%'] : ['0%', '-50%'] }}
-        transition={{ duration, repeat: Infinity, ease: 'linear' }}
-      >
-        {doubled.map((name, i) => (
-          <span key={i} className="font-bold uppercase tracking-wide">
-            {name}
-          </span>
-        ))}
-      </motion.div>
+    <div className="flex items-center justify-between py-2.5">
+      <span className={`text-sm ${isHighest ? 'font-semibold text-foreground' : 'text-muted-foreground'}`}>
+        {REGION_LABELS[region] ?? region}
+      </span>
+      <div className="flex items-center gap-2">
+        <span className={`text-sm font-bold tabular-nums ${isHighest ? 'text-foreground' : 'text-muted-foreground'}`}>{value}</span>
+        <span className={`inline-flex items-center text-[11px] font-medium px-2 py-0.5 rounded-full ring-1 ${band.bg} ${band.text} ${band.ring}`}>
+          {band.label}
+        </span>
+      </div>
+    </div>
+  );
+}
+
+function Pm25Row({ region, value }: { region: string; value: number }) {
+  return (
+    <div className="flex items-center justify-between py-2">
+      <span className="text-sm text-muted-foreground">{REGION_LABELS[region] ?? region}</span>
+      <span className="text-sm font-semibold tabular-nums text-foreground">{value} µg/m³</span>
     </div>
   );
 }
 
 export default function TeaserPage() {
-  const { data } = useLeaderboard();
-  const names = useMemo(() => data.map((t) => t.teamName), [data]);
-  const { days, hours, minutes, seconds } = useCountdown(REVEAL_AT);
-
-  // Aggregate-only stats — safe to show since they never reveal any team's
-  // individual standing, unlike per-team totals or ranks.
-  // Memoized so the array reference is stable across the once-a-second
-  // re-renders from the countdown — otherwise ScrambleSpotlight's interval
-  // gets torn down and restarted every second and never actually fires.
-  const spotlightItems = useMemo(() => {
-    const totalStepsAllTeams = data.reduce((sum, t) => sum + t.total, 0);
-    return [...names, `${totalStepsAllTeams.toLocaleString()} steps walked together so far`, `${data.length} teams in the running`];
-  }, [data, names]);
+  const { data, loading, error } = useHazeData();
+  const highestPsi = data ? highestRegion(data.psi) : null;
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-linear-to-b from-slate-950 via-slate-900 to-slate-950 text-white flex flex-col items-center justify-center">
-      <TickerRow names={names} duration={48} className="top-[12%] text-6xl text-white/6" />
-      <TickerRow names={names} duration={34} reverse className="top-1/2 -translate-y-1/2 text-4xl text-white/10" />
-      <TickerRow names={names} duration={55} className="top-[82%] text-6xl text-white/6" />
+    <div className="min-h-screen bg-gray-100">
+      <div className="max-w-lg mx-auto px-4 py-10">
+        <p className="text-xs font-medium text-muted-foreground mb-2">{CHALLENGE_NAME}</p>
+        <h1 className="text-2xl font-bold tracking-tight text-foreground mb-3">Step Challenge Paused</h1>
+        <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+          With haze conditions in Singapore, NEA is advising against prolonged outdoor activity. We're pausing the
+          step challenge for everyone's safety. Your team's progress and scores aren't affected, and the challenge
+          will resume once conditions improve.
+        </p>
 
-      <div className="relative z-10 flex flex-col items-center px-4 text-center">
-        <p className="text-sm font-medium text-white/50 mb-2">{CHALLENGE_NAME}</p>
-        <h1 className="text-3xl sm:text-4xl font-bold mb-3">Results are on their way</h1>
-        <p className="text-sm text-white/60 mb-10">Rankings are sealed until the big reveal.</p>
+        {error && (
+          <div className="rounded-3xl bg-card border border-border shadow-sm px-4 py-4 mb-4 text-sm text-muted-foreground">
+            {error} Check the latest readings directly at{' '}
+            <a href="https://www.haze.gov.sg" target="_blank" rel="noreferrer" className="text-foreground underline">
+              haze.gov.sg
+            </a>
+            .
+          </div>
+        )}
 
-        <div className="flex items-center justify-center gap-3 mb-10">
-          {([['Days', days], ['Hours', hours], ['Min', minutes], ['Sec', seconds]] as const).map(([label, value]) => (
-            <div key={label} className="min-w-20 text-center">
-              <p className="text-5xl font-bold tabular-nums">{String(value).padStart(2, '0')}</p>
-              <p className="text-[11px] uppercase tracking-wide text-white/50 mt-1">{label}</p>
+        {loading && !data && (
+          <div className="rounded-3xl bg-card border border-border shadow-sm px-4 py-6 mb-4 text-sm text-muted-foreground text-center">
+            Loading current readings…
+          </div>
+        )}
+
+        {data && (
+          <>
+            <div className="rounded-3xl bg-card border border-border shadow-sm px-4 py-3 mb-4">
+              <h2 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-1">
+                PSI (24-hour)
+              </h2>
+              <div className="divide-y divide-border">
+                {REGION_ORDER.filter((r) => r in data.psi).map((region) => (
+                  <PsiRow key={region} region={region} value={data.psi[region]} isHighest={region === highestPsi} />
+                ))}
+              </div>
             </div>
-          ))}
-        </div>
 
-        <div className="flex flex-col items-center gap-1">
-          <p className="text-[11px] uppercase tracking-widest text-white/40">Now tallying</p>
-          <ScrambleSpotlight items={spotlightItems} />
-        </div>
+            <div className="rounded-3xl bg-card border border-border shadow-sm px-4 py-3 mb-4">
+              <h2 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-1">
+                PM2.5 (1-hour)
+              </h2>
+              <div className="divide-y divide-border">
+                {REGION_ORDER.filter((r) => r in data.pm25).map((region) => (
+                  <Pm25Row key={region} region={region} value={data.pm25[region]} />
+                ))}
+              </div>
+            </div>
+
+            <p className="text-xs text-muted-foreground text-center">
+              Readings as of {formatTimestamp(data.officialUpdatedAt)}
+              {' '}· Source:{' '}
+              <a href="https://www.haze.gov.sg" target="_blank" rel="noreferrer" className="underline">
+                haze.gov.sg
+              </a>
+            </p>
+          </>
+        )}
       </div>
     </div>
   );
