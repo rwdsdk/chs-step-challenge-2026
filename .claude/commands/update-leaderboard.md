@@ -43,6 +43,22 @@ the last **committed** version of `leaderboard.json`, not whatever's
 currently in the working tree — see the comment above `committedTeams` in
 the script for why).
 
+**Whenever a Most Improved bonus is applied, also add a matching entry to
+the top-level `announcements` array** so it surfaces in the dismissible
+banner at the top of the app: `{ id: "<slug>-<unix-ms>", date: "<current ISO
+timestamp>", weekIdx: <0-based week index>, kind: "improved", title: "Most
+Improved — <Week label>", amount: <bonus amount>, teams: ["<Team A>", "<Team
+B>", ...] }`. The banner colors and icons itself from `weekIdx`/`kind` (same
+palette as the badges — pink for Week 2, a shoe icon for `"improved"`, etc.),
+so these fields must be accurate, not just the display text. One combined
+announcement per event (not one per team) — the banner already batches
+multiple *different* announcements together, so a single event with several
+winners should stay a single entry with a `teams` array, each shown on its
+own line. The `id` becomes a permanent localStorage dedup key once any
+visitor sees it, so don't reuse or regenerate an existing announcement's
+`id` when editing something else later. This array is preserved automatically
+by `aggregate-stepup.mjs` across re-runs, same as `bonuses`.
+
 ## Steps
 
 1. Run:

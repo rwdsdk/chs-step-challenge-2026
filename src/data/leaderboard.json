@@ -1,10 +1,21 @@
 {
-  "generatedAt": "2026-09-29T01:33:07.722Z",
+  "generatedAt": "2026-09-29T01:43:19.360Z",
   "weekLabels": [
     "Week 1",
     "Week 2",
     "Week 3",
     "Week 4"
+  ],
+  "announcements": [
+    {
+      "id": "most-improved-week2-1759132800000",
+      "date": "2026-09-29T00:00:00.000Z",
+      "weekIdx": 1,
+      "kind": "improved",
+      "title": "Most Improved: Week 2",
+      "amount": 15000,
+      "teams": ["The Halal Guys", "The Return of Sole Survivors", "Nothing is Impossible"]
+    }
   ],
   "teams": [
     {
@@ -191,7 +202,7 @@
         }
       ],
       "total": 1118476,
-      "rankChange": 1
+      "rankChange": 0
     },
     {
       "teamName": "Walkie Talkies",
@@ -221,7 +232,7 @@
         }
       ],
       "total": 1115270,
-      "rankChange": -1
+      "rankChange": 0
     },
     {
       "teamName": "So High!",

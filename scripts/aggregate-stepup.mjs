@@ -133,9 +133,11 @@ for (const row of regRows) {
 // ── 4. Seed week totals from the previous leaderboard.json (so a team with no
 //       matched CSV this run keeps its prior data instead of being zeroed) ────
 let prevTeams = null;
+let prevAnnouncements = [];
 try {
   const prev = JSON.parse(readFileSync(outPath, 'utf8'));
   if (Array.isArray(prev.teams)) prevTeams = prev.teams;
+  if (Array.isArray(prev.announcements)) prevAnnouncements = prev.announcements;
 } catch {
   // No previous file — first run
 }
@@ -275,6 +277,7 @@ const teamRows = teams
 const output = {
   generatedAt: new Date().toISOString(),
   weekLabels: WEEK_LABELS,
+  announcements: prevAnnouncements,
   teams: teamRows,
 };
 

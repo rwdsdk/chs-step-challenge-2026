@@ -1,13 +1,11 @@
 import { Fragment, useState } from 'react';
 import { Tabs } from '@base-ui/react/tabs';
 import { Accordion } from '@base-ui/react/accordion';
-import { ArrowUp, ArrowDown, ChevronDown, Gift, SportShoe, X } from 'lucide-react';
+import { ArrowUp, ArrowDown, ChevronDown, X } from 'lucide-react';
 import { useLeaderboard, type TeamRow } from '@/hooks/useLeaderboard';
-
-const BONUS_KIND_ICON = { event: Gift, improved: SportShoe } as const;
-function bonusIcon(kind: string | undefined) {
-  return BONUS_KIND_ICON[kind as keyof typeof BONUS_KIND_ICON] ?? Gift;
-}
+import { useAnnouncements } from '@/hooks/useAnnouncements';
+import { AnnouncementBanner } from '@/components/AnnouncementBanner';
+import { WEEK_BONUS_COLORS, bonusIcon } from '@/lib/bonusPalette';
 import { CHALLENGE_NAME, CHALLENGE_MONTH, CHALLENGE_START, CHALLENGE_END } from '@/config';
 
 const FAQ: { q: string; a: string }[] = [
@@ -91,13 +89,6 @@ const MEDAL_BADGE: Record<number, string> = {
   2: 'bg-linear-to-br from-slate-300 to-slate-400 text-white shadow-sm',
   3: 'bg-linear-to-br from-[#c68a4e] to-[#8b5e34] text-white shadow-sm',
 };
-
-const WEEK_BONUS_COLORS = [
-  { grad: 'to-amber-50/70', ring: 'ring-amber-300/50', icon: 'text-amber-600' },
-  { grad: 'to-pink-50/70', ring: 'ring-pink-300/50', icon: 'text-pink-600' },
-  { grad: 'to-violet-50/70', ring: 'ring-violet-300/50', icon: 'text-violet-600' },
-  { grad: 'to-rose-50/70', ring: 'ring-rose-300/50', icon: 'text-rose-600' },
-];
 
 interface BonusBadgeInstance {
   weekIdx: number;
@@ -204,7 +195,8 @@ function TeamDetailPanel({ team, activeWeekIdx, onClose, exiting }: { team: Team
 }
 
 export default function App() {
-  const { data, weekLabels, generatedAt } = useLeaderboard();
+  const { data, weekLabels, generatedAt, announcements } = useLeaderboard();
+  const { unseen: unseenAnnouncements, dismiss: dismissAnnouncement } = useAnnouncements(announcements);
   const hasData = data.length > 0;
   const challengeStatus = getChallengeStatus();
   const status = STATUS_STYLES[challengeStatus];
@@ -263,8 +255,10 @@ export default function App() {
         </div>
       </header>
 
-      <main className="max-w-lg mx-auto px-4 pt-4 pb-12 overflow-hidden">
-        <Tabs.Root defaultValue="ranking">
+      <AnnouncementBanner announcements={unseenAnnouncements} onDismiss={dismissAnnouncement} />
+
+      <main className="max-w-lg mx-auto px-4 pb-12 overflow-hidden">
+        <Tabs.Root defaultValue="ranking" className="pt-4">
 
           {/* Tab list */}
           <Tabs.List className="flex gap-1 bg-card shadow-sm p-1 rounded-full mb-5">
