@@ -14,7 +14,11 @@
       "kind": "improved",
       "title": "Most Improved: Week 2",
       "amount": 15000,
-      "teams": ["The Halal Guys", "The Return of Sole Survivors", "Nothing is Impossible"]
+      "teams": [
+        "The Halal Guys",
+        "The Return of Sole Survivors",
+        "Nothing is Impossible"
+      ]
     }
   ],
   "teams": [
@@ -202,7 +206,7 @@
         }
       ],
       "total": 1118476,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
       "teamName": "Walkie Talkies",
@@ -232,7 +236,7 @@
         }
       ],
       "total": 1115270,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
       "teamName": "So High!",

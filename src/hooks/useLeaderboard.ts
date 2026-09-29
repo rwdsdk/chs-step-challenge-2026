@@ -37,7 +37,7 @@ export interface LeaderboardState {
 
 export function useLeaderboard(): LeaderboardState {
   const generatedAt = data.generatedAt ? new Date(data.generatedAt) : null;
-  const announcements = (data.announcements ?? []).map((a) => ({ ...a, date: new Date(a.date) }));
+  const announcements = (data.announcements ?? []).map((a) => ({ ...a, date: new Date(a.date) })) as Announcement[];
 
   return {
     data: data.teams as TeamRow[],

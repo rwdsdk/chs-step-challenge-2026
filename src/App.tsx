@@ -103,6 +103,8 @@ function bonusBadgeInstances(team: TeamRow): BonusBadgeInstance[] {
   );
 }
 
+const MAX_VISIBLE_BONUS_BADGES = 3;
+
 function BonusStack({ instances, size = 16 }: { instances: BonusBadgeInstance[]; size?: number }) {
   if (instances.length === 0) return null;
   // Most recent bonus leads (leftmost, on top); older ones trail behind it to
@@ -111,21 +113,40 @@ function BonusStack({ instances, size = 16 }: { instances: BonusBadgeInstance[];
   // Overlap is proportional to the circle's own diameter (not a fixed px
   // value) so the stack looks the same at every size it's used at.
   const newestFirst = [...instances].reverse();
+  const visible = newestFirst.slice(0, MAX_VISIBLE_BONUS_BADGES);
+  const overflowCount = newestFirst.length - visible.length;
+  const badgeSize = Math.round(size * 0.55);
   return (
-    <span className="inline-flex items-center shrink-0" aria-label="Includes bonus steps">
-      {newestFirst.map((inst, i) => {
+    <span className="relative inline-flex items-center shrink-0" aria-label="Includes bonus steps">
+      {visible.map((inst, i) => {
         const palette = WEEK_BONUS_COLORS[inst.weekIdx % WEEK_BONUS_COLORS.length];
         const Icon = bonusIcon(inst.kind);
         return (
           <span
             key={`${inst.weekIdx}-${inst.kind}-${i}`}
             className={`inline-flex items-center justify-center shrink-0 rounded-full border-2 border-card ring-1 ${palette.ring} shadow-sm bg-linear-to-b from-white/90 ${palette.grad}`}
-            style={{ width: size, height: size, marginLeft: i > 0 ? -size * 0.65 : 0, zIndex: newestFirst.length - i }}
+            style={{ width: size, height: size, marginLeft: i > 0 ? -size * 0.65 : 0, zIndex: visible.length - i }}
           >
             <Icon className={palette.icon} style={{ width: Math.round(size * 0.6), height: Math.round(size * 0.6) }} />
           </span>
         );
       })}
+      {overflowCount > 0 && (
+        <span
+          className="absolute flex items-center justify-center rounded-full bg-foreground text-card font-bold shadow-sm leading-none"
+          style={{
+            minWidth: badgeSize,
+            height: badgeSize,
+            paddingInline: Math.max(2, Math.round(badgeSize * 0.22)),
+            fontSize: Math.round(size * 0.32),
+            top: -badgeSize * 0.35,
+            right: -badgeSize * 0.35,
+            zIndex: visible.length + 1,
+          }}
+        >
+          +{overflowCount}
+        </span>
+      )}
     </span>
   );
 }
@@ -285,7 +306,7 @@ export default function App() {
               <>
                 {/* Top 3 podium */}
                 <div className="mb-5">
-                <div className="grid grid-cols-3 gap-2 w-full items-end">
+                <div className="grid grid-cols-[1fr_1.08fr_1fr] gap-1 w-full items-end">
                   {[1, 0, 2].map((idx) => {
                     const team = data[idx];
                     if (!team) return <div key={idx} />;
