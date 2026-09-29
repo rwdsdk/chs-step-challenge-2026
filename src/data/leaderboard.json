@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-28T01:03:27.634Z",
+  "generatedAt": "2026-09-29T01:33:07.722Z",
   "weekLabels": [
     "Week 1",
     "Week 2",
@@ -13,25 +13,40 @@
         {
           "label": "Week 1",
           "steps": 620507,
-          "bonus": 10000,
-          "bonusLabel": "Completed weekly event"
+          "bonuses": [
+            {
+              "amount": 10000,
+              "label": "Completed weekly event",
+              "kind": "event"
+            }
+          ]
         },
         {
           "label": "Week 2",
-          "steps": 743018,
-          "bonus": 15000,
-          "bonusLabel": "Completed weekly event"
+          "steps": 761645,
+          "bonuses": [
+            {
+              "amount": 15000,
+              "label": "Completed weekly event",
+              "kind": "event"
+            },
+            {
+              "amount": 15000,
+              "label": "Most improved",
+              "kind": "improved"
+            }
+          ]
         },
         {
           "label": "Week 3",
-          "steps": 0
+          "steps": 135778
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 1363525,
+      "total": 1517930,
       "rankChange": 0
     },
     {
@@ -40,25 +55,35 @@
         {
           "label": "Week 1",
           "steps": 621475,
-          "bonus": 10000,
-          "bonusLabel": "Completed weekly event"
+          "bonuses": [
+            {
+              "amount": 10000,
+              "label": "Completed weekly event",
+              "kind": "event"
+            }
+          ]
         },
         {
           "label": "Week 2",
-          "steps": 656102,
-          "bonus": 15000,
-          "bonusLabel": "Completed weekly event"
+          "steps": 656200,
+          "bonuses": [
+            {
+              "amount": 15000,
+              "label": "Completed weekly event",
+              "kind": "event"
+            }
+          ]
         },
         {
           "label": "Week 3",
-          "steps": 0
+          "steps": 96681
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 1277577,
+      "total": 1374356,
       "rankChange": 0
     },
     {
@@ -67,25 +92,40 @@
         {
           "label": "Week 1",
           "steps": 498500,
-          "bonus": 10000,
-          "bonusLabel": "Completed weekly event"
+          "bonuses": [
+            {
+              "amount": 10000,
+              "label": "Completed weekly event",
+              "kind": "event"
+            }
+          ]
         },
         {
           "label": "Week 2",
-          "steps": 627628,
-          "bonus": 15000,
-          "bonusLabel": "Completed weekly event"
+          "steps": 642698,
+          "bonuses": [
+            {
+              "amount": 15000,
+              "label": "Completed weekly event",
+              "kind": "event"
+            },
+            {
+              "amount": 15000,
+              "label": "Most improved",
+              "kind": "improved"
+            }
+          ]
         },
         {
           "label": "Week 3",
-          "steps": 0
+          "steps": 96566
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 1126128,
+      "total": 1237764,
       "rankChange": 0
     },
     {
@@ -94,50 +134,40 @@
         {
           "label": "Week 1",
           "steps": 432854,
-          "bonus": 10000,
-          "bonusLabel": "Completed weekly event"
+          "bonuses": [
+            {
+              "amount": 10000,
+              "label": "Completed weekly event",
+              "kind": "event"
+            }
+          ]
         },
         {
           "label": "Week 2",
-          "steps": 662005,
-          "bonus": 15000,
-          "bonusLabel": "Completed weekly event"
+          "steps": 677145,
+          "bonuses": [
+            {
+              "amount": 15000,
+              "label": "Completed weekly event",
+              "kind": "event"
+            },
+            {
+              "amount": 15000,
+              "label": "Most improved",
+              "kind": "improved"
+            }
+          ]
         },
         {
           "label": "Week 3",
-          "steps": 0
+          "steps": 102689
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 1094859,
-      "rankChange": 0
-    },
-    {
-      "teamName": "Walkie Talkies",
-      "weeklySteps": [
-        {
-          "label": "Week 1",
-          "steps": 542439,
-          "bonus": 10000,
-          "bonusLabel": "Completed weekly event"
-        },
-        {
-          "label": "Week 2",
-          "steps": 509737
-        },
-        {
-          "label": "Week 3",
-          "steps": 0
-        },
-        {
-          "label": "Week 4",
-          "steps": 0
-        }
-      ],
-      "total": 1052176,
+      "total": 1212688,
       "rankChange": 0
     },
     {
@@ -149,19 +179,49 @@
         },
         {
           "label": "Week 2",
-          "steps": 455904
+          "steps": 469185
         },
         {
           "label": "Week 3",
-          "steps": 0
+          "steps": 72143
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 1033052,
-      "rankChange": 0
+      "total": 1118476,
+      "rankChange": 1
+    },
+    {
+      "teamName": "Walkie Talkies",
+      "weeklySteps": [
+        {
+          "label": "Week 1",
+          "steps": 542439,
+          "bonuses": [
+            {
+              "amount": 10000,
+              "label": "Completed weekly event",
+              "kind": "event"
+            }
+          ]
+        },
+        {
+          "label": "Week 2",
+          "steps": 510051
+        },
+        {
+          "label": "Week 3",
+          "steps": 62780
+        },
+        {
+          "label": "Week 4",
+          "steps": 0
+        }
+      ],
+      "total": 1115270,
+      "rankChange": -1
     },
     {
       "teamName": "So High!",
@@ -172,20 +232,25 @@
         },
         {
           "label": "Week 2",
-          "steps": 440902,
-          "bonus": 15000,
-          "bonusLabel": "Completed weekly event"
+          "steps": 441009,
+          "bonuses": [
+            {
+              "amount": 15000,
+              "label": "Completed weekly event",
+              "kind": "event"
+            }
+          ]
         },
         {
           "label": "Week 3",
-          "steps": 0
+          "steps": 43298
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 917723,
+      "total": 961128,
       "rankChange": 0
     },
     {
@@ -194,23 +259,28 @@
         {
           "label": "Week 1",
           "steps": 457839,
-          "bonus": 10000,
-          "bonusLabel": "Completed weekly event"
+          "bonuses": [
+            {
+              "amount": 10000,
+              "label": "Completed weekly event",
+              "kind": "event"
+            }
+          ]
         },
         {
           "label": "Week 2",
-          "steps": 440377
+          "steps": 440467
         },
         {
           "label": "Week 3",
-          "steps": 0
+          "steps": 34731
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 898216,
+      "total": 933037,
       "rankChange": 0
     },
     {
@@ -219,25 +289,35 @@
         {
           "label": "Week 1",
           "steps": 436905,
-          "bonus": 10000,
-          "bonusLabel": "Completed weekly event"
+          "bonuses": [
+            {
+              "amount": 10000,
+              "label": "Completed weekly event",
+              "kind": "event"
+            }
+          ]
         },
         {
           "label": "Week 2",
           "steps": 425332,
-          "bonus": 15000,
-          "bonusLabel": "Completed weekly event"
+          "bonuses": [
+            {
+              "amount": 15000,
+              "label": "Completed weekly event",
+              "kind": "event"
+            }
+          ]
         },
         {
           "label": "Week 3",
-          "steps": 0
+          "steps": 23035
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 862237,
+      "total": 885272,
       "rankChange": 0
     },
     {
@@ -249,18 +329,18 @@
         },
         {
           "label": "Week 2",
-          "steps": 351332
+          "steps": 366848
         },
         {
           "label": "Week 3",
-          "steps": 0
+          "steps": 20340
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 700817,
+      "total": 736673,
       "rankChange": 0
     },
     {
@@ -272,18 +352,18 @@
         },
         {
           "label": "Week 2",
-          "steps": 279231
+          "steps": 279389
         },
         {
           "label": "Week 3",
-          "steps": 0
+          "steps": 20989
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 676014,
+      "total": 697161,
       "rankChange": 0
     },
     {
@@ -292,25 +372,35 @@
         {
           "label": "Week 1",
           "steps": 278805,
-          "bonus": 10000,
-          "bonusLabel": "Completed weekly event"
+          "bonuses": [
+            {
+              "amount": 10000,
+              "label": "Completed weekly event",
+              "kind": "event"
+            }
+          ]
         },
         {
           "label": "Week 2",
-          "steps": 279628,
-          "bonus": 15000,
-          "bonusLabel": "Completed weekly event"
+          "steps": 290161,
+          "bonuses": [
+            {
+              "amount": 15000,
+              "label": "Completed weekly event",
+              "kind": "event"
+            }
+          ]
         },
         {
           "label": "Week 3",
-          "steps": 0
+          "steps": 43661
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 558433,
+      "total": 612627,
       "rankChange": 0
     },
     {
@@ -318,26 +408,36 @@
       "weeklySteps": [
         {
           "label": "Week 1",
-          "steps": 295154,
-          "bonus": 10000,
-          "bonusLabel": "Completed weekly event"
+          "steps": 299016,
+          "bonuses": [
+            {
+              "amount": 10000,
+              "label": "Completed weekly event",
+              "kind": "event"
+            }
+          ]
         },
         {
           "label": "Week 2",
-          "steps": 256943,
-          "bonus": 15000,
-          "bonusLabel": "Completed weekly event"
+          "steps": 265985,
+          "bonuses": [
+            {
+              "amount": 15000,
+              "label": "Completed weekly event",
+              "kind": "event"
+            }
+          ]
         },
         {
           "label": "Week 3",
-          "steps": 0
+          "steps": 27043
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 552097,
+      "total": 592044,
       "rankChange": 0
     },
     {
@@ -346,25 +446,35 @@
         {
           "label": "Week 1",
           "steps": 265494,
-          "bonus": 10000,
-          "bonusLabel": "Completed weekly event"
+          "bonuses": [
+            {
+              "amount": 10000,
+              "label": "Completed weekly event",
+              "kind": "event"
+            }
+          ]
         },
         {
           "label": "Week 2",
-          "steps": 285620,
-          "bonus": 15000,
-          "bonusLabel": "Completed weekly event"
+          "steps": 291822,
+          "bonuses": [
+            {
+              "amount": 15000,
+              "label": "Completed weekly event",
+              "kind": "event"
+            }
+          ]
         },
         {
           "label": "Week 3",
-          "steps": 0
+          "steps": 26111
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 551114,
+      "total": 583427,
       "rankChange": 0
     },
     {
@@ -376,18 +486,18 @@
         },
         {
           "label": "Week 2",
-          "steps": 260765
+          "steps": 261013
         },
         {
           "label": "Week 3",
-          "steps": 0
+          "steps": 18103
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 546412,
+      "total": 564763,
       "rankChange": 0
     },
     {
@@ -396,23 +506,28 @@
         {
           "label": "Week 1",
           "steps": 246736,
-          "bonus": 10000,
-          "bonusLabel": "Completed weekly event"
+          "bonuses": [
+            {
+              "amount": 10000,
+              "label": "Completed weekly event",
+              "kind": "event"
+            }
+          ]
         },
         {
           "label": "Week 2",
-          "steps": 231646
+          "steps": 248566
         },
         {
           "label": "Week 3",
-          "steps": 0
+          "steps": 23802
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 478382,
+      "total": 519104,
       "rankChange": 0
     },
     {
@@ -424,18 +539,18 @@
         },
         {
           "label": "Week 2",
-          "steps": 157610
+          "steps": 182615
         },
         {
           "label": "Week 3",
-          "steps": 0
+          "steps": 16013
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 320213,
+      "total": 361231,
       "rankChange": 0
     }
   ]

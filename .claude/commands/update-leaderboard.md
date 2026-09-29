@@ -26,13 +26,22 @@ total, so re-running it never silently drops a bonus.
 If the user doesn't mention one, ask: "Did any team earn a bonus this round?"
 Bonuses are per-week (a team could have a different bonus in Week 1 vs Week 2,
 etc.), so confirm which week it applies to — usually the current/active week,
-but don't assume. Apply a confirmed bonus as its own step, separate from
-running the script: add `bonus` (number) and `bonusLabel` (short reason string)
-to that team's specific week entry in `weeklySteps`, add the bonus amount into
-that week's `steps`, recompute `total`, re-sort by total, and recompute
-`rankChange` the same way the script does (rank vs the last **committed**
-version of `leaderboard.json`, not whatever's currently in the working tree —
-see the comment above `committedTeams` in the script for why).
+but don't assume. A single week can hold **more than one bonus** — e.g. a team
+can earn both the standard "Completed weekly event" bonus and a separate
+"Most improved" bonus in the same week. Each gets its own badge in the UI
+(a gift icon for `kind: "event"`, a running-shoe icon for `kind: "improved"`)
+rather than being merged into one. Apply a confirmed bonus as its own step,
+separate from running the script: **append** a `{ amount, label, kind }`
+object to that team's specific week's `bonuses` array in `weeklySteps`
+(creating the array if it doesn't exist yet) — never overwrite an existing
+entry in that array, since that would silently delete a previously-earned
+bonus. Use `kind: "event"` for the standard weekly-completion bonus and
+`kind: "improved"` for the Most Improved bonus. Add the new bonus amount into that week's `steps`, recompute `total`
+(sum of all `bonuses[].amount` plus organic steps, same as always), re-sort
+by total, and recompute `rankChange` the same way the script does (rank vs
+the last **committed** version of `leaderboard.json`, not whatever's
+currently in the working tree — see the comment above `committedTeams` in
+the script for why).
 
 ## Steps
 

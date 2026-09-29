@@ -143,10 +143,11 @@ const prevWeekTotals = new Map(prevTeams?.map((t) => [t.teamName, t.weeklySteps.
 
 // Bonuses are applied manually (not derivable from StepUp CSVs) and must survive
 // re-running this script — otherwise re-aggregating a week that already has a bonus
-// would silently drop it. Carry the bonus/bonusLabel metadata forward for every team
-// regardless of whether it's matched to a fresh CSV this run.
+// would silently drop it. Carry the bonuses array forward for every team
+// regardless of whether it's matched to a fresh CSV this run. A week can hold more
+// than one bonus (e.g. "Completed weekly event" and "Most improved" in the same week).
 const prevBonusInfo = new Map(
-  prevTeams?.map((t) => [t.teamName, t.weeklySteps.map((w) => (w.bonus ? { bonus: w.bonus, bonusLabel: w.bonusLabel } : null))]) ?? []
+  prevTeams?.map((t) => [t.teamName, t.weeklySteps.map((w) => (w.bonuses?.length ? { bonuses: w.bonuses } : null))]) ?? []
 );
 
 // Rank-change baseline: prefer the last *committed* leaderboard.json (a day boundary)
@@ -255,8 +256,9 @@ const teamRows = teams
     const bonusPerWeek = prevBonusInfo.get(teamName) ?? [];
     const weeklySteps = weekTotals.get(teamName).map((organicSteps, i) => {
       const info = bonusPerWeek[i];
-      const steps = wasMatched && info ? organicSteps + info.bonus : organicSteps;
-      return info ? { label: WEEK_LABELS[i], steps, bonus: info.bonus, bonusLabel: info.bonusLabel } : { label: WEEK_LABELS[i], steps };
+      const bonusTotal = info ? info.bonuses.reduce((sum, b) => sum + b.amount, 0) : 0;
+      const steps = wasMatched && info ? organicSteps + bonusTotal : organicSteps;
+      return info ? { label: WEEK_LABELS[i], steps, bonuses: info.bonuses } : { label: WEEK_LABELS[i], steps };
     });
     const total = weeklySteps.reduce((sum, w) => sum + w.steps, 0);
     return { teamName, weeklySteps, total };

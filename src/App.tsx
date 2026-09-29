@@ -1,8 +1,13 @@
 import { Fragment, useState } from 'react';
 import { Tabs } from '@base-ui/react/tabs';
 import { Accordion } from '@base-ui/react/accordion';
-import { ArrowUp, ArrowDown, ChevronDown, Gift, X } from 'lucide-react';
+import { ArrowUp, ArrowDown, ChevronDown, Gift, SportShoe, X } from 'lucide-react';
 import { useLeaderboard, type TeamRow } from '@/hooks/useLeaderboard';
+
+const BONUS_KIND_ICON = { event: Gift, improved: SportShoe } as const;
+function bonusIcon(kind: string | undefined) {
+  return BONUS_KIND_ICON[kind as keyof typeof BONUS_KIND_ICON] ?? Gift;
+}
 import { CHALLENGE_NAME, CHALLENGE_MONTH, CHALLENGE_START, CHALLENGE_END } from '@/config';
 
 const FAQ: { q: string; a: string }[] = [
@@ -94,32 +99,39 @@ const WEEK_BONUS_COLORS = [
   { grad: 'to-rose-50/70', ring: 'ring-rose-300/50', icon: 'text-rose-600' },
 ];
 
-function bonusWeekIndices(team: TeamRow): number[] {
-  return team.weeklySteps.reduce<number[]>((acc, w, i) => {
-    if (w.bonus) acc.push(i);
-    return acc;
-  }, []);
+interface BonusBadgeInstance {
+  weekIdx: number;
+  kind: string;
 }
 
-function BonusStack({ weekIndices, size = 16 }: { weekIndices: number[]; size?: number }) {
-  if (weekIndices.length === 0) return null;
-  // Most recent week leads (leftmost, on top); older weeks trail behind it to
+// One instance per bonus *reason*, not per week — a week with both a
+// "Completed weekly event" and a "Most improved" bonus gets two badges.
+function bonusBadgeInstances(team: TeamRow): BonusBadgeInstance[] {
+  return team.weeklySteps.flatMap((w, weekIdx) =>
+    (w.bonuses ?? []).map((b) => ({ weekIdx, kind: b.kind ?? 'event' }))
+  );
+}
+
+function BonusStack({ instances, size = 16 }: { instances: BonusBadgeInstance[]; size?: number }) {
+  if (instances.length === 0) return null;
+  // Most recent bonus leads (leftmost, on top); older ones trail behind it to
   // the right, each mostly hidden except for a sliver — same convention as an
   // avatar stack where the primary item sits in front.
   // Overlap is proportional to the circle's own diameter (not a fixed px
   // value) so the stack looks the same at every size it's used at.
-  const newestFirst = [...weekIndices].reverse();
+  const newestFirst = [...instances].reverse();
   return (
     <span className="inline-flex items-center shrink-0" aria-label="Includes bonus steps">
-      {newestFirst.map((weekIdx, i) => {
-        const palette = WEEK_BONUS_COLORS[weekIdx % WEEK_BONUS_COLORS.length];
+      {newestFirst.map((inst, i) => {
+        const palette = WEEK_BONUS_COLORS[inst.weekIdx % WEEK_BONUS_COLORS.length];
+        const Icon = bonusIcon(inst.kind);
         return (
           <span
-            key={weekIdx}
+            key={`${inst.weekIdx}-${inst.kind}-${i}`}
             className={`inline-flex items-center justify-center shrink-0 rounded-full border-2 border-card ring-1 ${palette.ring} shadow-sm bg-linear-to-b from-white/90 ${palette.grad}`}
             style={{ width: size, height: size, marginLeft: i > 0 ? -size * 0.65 : 0, zIndex: newestFirst.length - i }}
           >
-            <Gift className={palette.icon} style={{ width: Math.round(size * 0.6), height: Math.round(size * 0.6) }} />
+            <Icon className={palette.icon} style={{ width: Math.round(size * 0.6), height: Math.round(size * 0.6) }} />
           </span>
         );
       })}
@@ -154,24 +166,32 @@ function TeamDetailPanel({ team, activeWeekIdx, onClose, exiting }: { team: Team
         </button>
       </div>
       <div className="px-4 py-3 space-y-2">
-        {team.weeklySteps.map(({ label, steps, bonus }, idx) => (
-          <div
-            key={label}
-            className={`flex items-center justify-between text-sm ${idx === activeWeekIdx ? 'font-semibold text-foreground' : 'text-muted-foreground'}`}
-          >
-            <span className="flex items-center gap-1.5">
-              {label}
-              {bonus ? (
-                <span
-                  className={`inline-flex items-center gap-0.5 leading-none text-[10px] font-semibold ${WEEK_BONUS_COLORS[idx % WEEK_BONUS_COLORS.length].icon} bg-linear-to-b from-white/90 ${WEEK_BONUS_COLORS[idx % WEEK_BONUS_COLORS.length].grad} ring-1 ${WEEK_BONUS_COLORS[idx % WEEK_BONUS_COLORS.length].ring} shadow-sm px-1.5 py-1 rounded-full`}
-                >
-                  <Gift className="w-3 h-3" />+{formatSteps(bonus)}
-                </span>
-              ) : null}
-            </span>
-            <span className="tabular-nums">{formatSteps(steps)}</span>
-          </div>
-        ))}
+        {team.weeklySteps.map(({ label, steps, bonuses }, idx) => {
+          const palette = WEEK_BONUS_COLORS[idx % WEEK_BONUS_COLORS.length];
+          return (
+            <div
+              key={label}
+              className={`flex items-center justify-between text-sm ${idx === activeWeekIdx ? 'font-semibold text-foreground' : 'text-muted-foreground'}`}
+            >
+              <span className="flex items-center gap-1.5 flex-wrap">
+                {label}
+                {bonuses?.map((b, bi) => {
+                  const Icon = bonusIcon(b.kind);
+                  return (
+                    <span
+                      key={bi}
+                      title={b.label}
+                      className={`inline-flex items-center gap-0.5 leading-none text-[10px] font-semibold ${palette.icon} bg-linear-to-b from-white/90 ${palette.grad} ring-1 ${palette.ring} shadow-sm px-1.5 py-1 rounded-full`}
+                    >
+                      <Icon className="w-3 h-3" />+{formatSteps(b.amount)}
+                    </span>
+                  );
+                })}
+              </span>
+              <span className="tabular-nums">{formatSteps(steps)}</span>
+            </div>
+          );
+        })}
         <div className="flex items-center justify-between text-sm font-bold text-foreground pt-2 border-t border-border">
           <span>Total</span>
           <span className="tabular-nums">
@@ -286,11 +306,11 @@ export default function App() {
                         onClick={() => toggleExpanded(team.teamName)}
                         className={`relative flex flex-col items-center rounded-3xl bg-card shadow-sm text-center min-w-0 overflow-hidden cursor-pointer transition-shadow duration-150 pb-8 ${
                           isExpanded ? 'ring-2 ring-primary' : ''
-                        } ${isFirst ? 'px-2.5 pt-7' : 'px-2.5 pt-5'}`}
+                        } ${isFirst ? 'px-1.5 pt-7' : 'px-2.5 pt-5'}`}
                       >
-                        {bonusWeekIndices(team).length > 0 && (
+                        {bonusBadgeInstances(team).length > 0 && (
                           <span className="absolute top-3 right-3">
-                            <BonusStack weekIndices={bonusWeekIndices(team)} size={16} />
+                            <BonusStack instances={bonusBadgeInstances(team)} size={16} />
                           </span>
                         )}
                         <RankNumeral rank={rank} large={isFirst} />
@@ -345,11 +365,11 @@ export default function App() {
                           </span>
                           <div className="flex-1 min-w-0">
                             <p className="text-sm font-semibold text-foreground leading-snug line-clamp-2 wrap-break-word min-w-0">{team.teamName}</p>
-                            {(thisWeekSteps !== null || bonusWeekIndices(team).length > 0 || (team.rankChange != null && team.rankChange !== 0)) && (
+                            {(thisWeekSteps !== null || bonusBadgeInstances(team).length > 0 || (team.rankChange != null && team.rankChange !== 0)) && (
                               <p className="flex items-center gap-1.5 text-xs text-muted-foreground tabular-nums mt-0.5">
                                 {thisWeekSteps !== null && <span>{formatSteps(thisWeekSteps)} this week</span>}
                                 <RankChangeBadge change={team.rankChange} />
-                                <BonusStack weekIndices={bonusWeekIndices(team)} size={14} />
+                                <BonusStack instances={bonusBadgeInstances(team)} size={14} />
                               </p>
                             )}
                           </div>

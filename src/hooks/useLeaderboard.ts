@@ -2,9 +2,8 @@ import data from '../data/leaderboard.json';
 
 export interface WeeklyStep {
   label: string;
-  steps: number; // includes any bonus for that week
-  bonus?: number;
-  bonusLabel?: string;
+  steps: number; // includes all bonuses for that week
+  bonuses?: { amount: number; label: string; kind?: 'event' | 'improved' }[];
 }
 
 export interface TeamRow {
