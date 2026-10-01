@@ -24,7 +24,7 @@ export function HazeWidget() {
         onClick={() => setExpanded((v) => !v)}
         className={`inline-flex items-center gap-1 text-[11px] font-medium px-2 py-1 rounded-full ring-1 ring-inset ${band.bg} ${band.text} ${band.ring} cursor-pointer`}
       >
-        PSI (Central) {value} · {band.label}
+        PSI {value} · {band.label}
         <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${expanded ? 'rotate-180' : ''}`} />
       </button>
 
