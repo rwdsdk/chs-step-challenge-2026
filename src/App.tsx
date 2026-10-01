@@ -5,6 +5,7 @@ import { ArrowUp, ArrowDown, ChevronDown, X } from 'lucide-react';
 import { useLeaderboard, type TeamRow } from '@/hooks/useLeaderboard';
 import { useAnnouncements } from '@/hooks/useAnnouncements';
 import { AnnouncementBanner } from '@/components/AnnouncementBanner';
+import { HazeWidget } from '@/components/HazeWidget';
 import { WEEK_BONUS_COLORS, bonusIcon } from '@/lib/bonusPalette';
 import { CHALLENGE_NAME, CHALLENGE_MONTH, CHALLENGE_START, CHALLENGE_END } from '@/config';
 
@@ -262,10 +263,13 @@ export default function App() {
             <p className="text-xs text-muted-foreground mt-0.5">{CHALLENGE_MONTH}</p>
           </div>
           <div className="flex flex-col items-end gap-1 shrink-0">
-            <span className={`inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full ring-1 ring-inset ${status.classes}`}>
-              <span className={`w-1.5 h-1.5 rounded-full ${status.dot} ${challengeStatus === 'live' ? 'animate-pulse' : ''}`} />
-              {status.label}
-            </span>
+            <div className="flex items-center gap-1.5">
+              <HazeWidget />
+              <span className={`inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full ring-1 ring-inset ${status.classes}`}>
+                <span className={`w-1.5 h-1.5 rounded-full ${status.dot} ${challengeStatus === 'live' ? 'animate-pulse' : ''}`} />
+                {status.label}
+              </span>
+            </div>
             {generatedAt && (
               <span className="text-[10px] text-muted-foreground">
                 <span>Last updated: </span>

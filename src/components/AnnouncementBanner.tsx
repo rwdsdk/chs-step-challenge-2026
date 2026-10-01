@@ -10,7 +10,19 @@ function formatSteps(n: number): string {
 function AnnouncementCard({ announcement, onDismiss }: { announcement: Announcement; onDismiss: () => void }) {
   if (!announcement.teams?.length) {
     // Plain-text fallback for a future non-bonus announcement.
-    return <p className="text-xs text-foreground">{announcement.message}</p>;
+    return (
+      <div className="flex items-start gap-3">
+        <p className="flex-1 min-w-0 text-xs text-foreground">{announcement.message}</p>
+        <button
+          type="button"
+          onClick={onDismiss}
+          className="text-muted-foreground hover:text-foreground shrink-0 cursor-pointer"
+          aria-label="Dismiss"
+        >
+          <X className="w-3.5 h-3.5" />
+        </button>
+      </div>
+    );
   }
 
   const palette = WEEK_BONUS_COLORS[(announcement.weekIdx ?? 0) % WEEK_BONUS_COLORS.length];

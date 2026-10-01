@@ -22,6 +22,14 @@ partial exports are safe to run. It also carries forward and correctly
 re-applies any existing per-week bonus on top of the freshly-aggregated organic
 total, so re-running it never silently drops a bonus.
 
+**The challenge was paused for a haze advisory on 2026-09-30 and 2026-10-01**
+(NEA advised against prolonged outdoor activity). The script excludes those
+two dates from every team's total via `EXCLUDED_DATES` — any steps StepUp
+happens to show for those days don't count either way, so re-running the
+script for a date range spanning the pause is still safe. If a future pause
+happens, add those dates to `EXCLUDED_DATES` in the script (and mention it to
+the user so they're aware before assuming otherwise).
+
 **Bonuses are separate from this script and won't be picked up automatically.**
 If the user doesn't mention one, ask: "Did any team earn a bonus this round?"
 Bonuses are per-week (a team could have a different bonus in Week 1 vs Week 2,

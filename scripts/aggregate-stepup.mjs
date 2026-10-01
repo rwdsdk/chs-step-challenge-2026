@@ -31,6 +31,13 @@ const WEEK_MS = 7 * 24 * 60 * 60 * 1000;
 const WEEK_LABELS = ['Week 1', 'Week 2', 'Week 3', 'Week 4'];
 const MIN_MATCH_SCORE = 2;
 
+// The challenge was paused company-wide for these dates (haze advisory —
+// NEA advised against prolonged outdoor activity). Any steps StepUp shows
+// for these days are excluded from every team's total — people's phones
+// still track movement regardless of the pause, but it shouldn't count
+// either way.
+const EXCLUDED_DATES = new Set(['2026-09-30', '2026-10-01']);
+
 const folder = process.argv[2] ?? join(homedir(), 'Desktop', 'step counts');
 const scriptDir = new URL('.', import.meta.url).pathname;
 const rosterConfigPath = join(scriptDir, 'team-roster.local.json');
@@ -214,8 +221,9 @@ for (const file of csvFiles) {
   console.log(`  ${file} -> "${bestTeam}" (matched ${bestScore}/${nonAdminRows.length} members)`);
   matchedTeams.add(bestTeam);
 
-  const latestCol = dateCols.length
-    ? dateCols.reduce((a, b) => (new Date(`${a.trim()}T00:00:00+08:00`) > new Date(`${b.trim()}T00:00:00+08:00`) ? a : b))
+  const countedDateCols = dateCols.filter((c) => !EXCLUDED_DATES.has(c.trim()));
+  const latestCol = countedDateCols.length
+    ? countedDateCols.reduce((a, b) => (new Date(`${a.trim()}T00:00:00+08:00`) > new Date(`${b.trim()}T00:00:00+08:00`) ? a : b))
     : null;
   const bestTeamTokens = teamTokenSets.get(bestTeam);
 
@@ -223,6 +231,7 @@ for (const file of csvFiles) {
   weekTotals.set(bestTeam, buckets);
   for (const row of nonAdminRows) {
     for (const col of dateCols) {
+      if (EXCLUDED_DATES.has(col.trim())) continue;
       const date = new Date(`${col.trim()}T00:00:00+08:00`);
       const weekIdx = Math.min(3, Math.max(0, Math.floor((date - CHALLENGE_START) / WEEK_MS)));
       const raw = String(row[col] ?? '0').replace(/,/g, '');
