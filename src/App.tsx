@@ -7,7 +7,7 @@ import { useAnnouncements } from '@/hooks/useAnnouncements';
 import { AnnouncementBanner } from '@/components/AnnouncementBanner';
 import { HazeWidget } from '@/components/HazeWidget';
 import { WEEK_BONUS_COLORS, bonusIcon } from '@/lib/bonusPalette';
-import { CHALLENGE_NAME, CHALLENGE_MONTH, CHALLENGE_START, CHALLENGE_END } from '@/config';
+import { CHALLENGE_NAME, CHALLENGE_MONTH } from '@/config';
 
 const FAQ: { q: string; a: string }[] = [
   {
@@ -57,23 +57,6 @@ function formatDate(d: Date): string {
     month: 'short', day: 'numeric', year: 'numeric',
   });
 }
-
-type ChallengeStatus = 'upcoming' | 'live' | 'ended';
-
-function getChallengeStatus(): ChallengeStatus {
-  const now = new Date();
-  const start = new Date(CHALLENGE_START);
-  const end = new Date(CHALLENGE_END);
-  if (now < start) return 'upcoming';
-  if (now > end) return 'ended';
-  return 'live';
-}
-
-const STATUS_STYLES: Record<ChallengeStatus, { label: string; classes: string; dot: string }> = {
-  upcoming: { label: 'Starts Soon', classes: 'bg-orange-500/10 text-orange-600 ring-orange-500/20', dot: 'bg-orange-500' },
-  live: { label: 'Live', classes: 'bg-emerald-500/10 text-emerald-600 ring-emerald-500/20', dot: 'bg-emerald-500' },
-  ended: { label: 'Ended', classes: 'bg-rose-500/10 text-rose-600 ring-rose-500/20', dot: 'bg-rose-500' },
-};
 
 function RankChangeBadge({ change }: { change: number | null | undefined }) {
   if (change == null || change === 0) return null;
@@ -220,8 +203,6 @@ export default function App() {
   const { data, weekLabels, generatedAt, announcements } = useLeaderboard();
   const { unseen: unseenAnnouncements, dismiss: dismissAnnouncement } = useAnnouncements(announcements);
   const hasData = data.length > 0;
-  const challengeStatus = getChallengeStatus();
-  const status = STATUS_STYLES[challengeStatus];
   const [expandedTeam, setExpandedTeam] = useState<string | null>(null);
   const [closingTeam, setClosingTeam] = useState<string | null>(null);
 
@@ -263,13 +244,7 @@ export default function App() {
             <p className="text-xs text-muted-foreground mt-0.5">{CHALLENGE_MONTH}</p>
           </div>
           <div className="flex flex-col items-end gap-1 shrink-0">
-            <div className="flex items-center gap-1.5">
-              <HazeWidget />
-              <span className={`inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full ring-1 ring-inset ${status.classes}`}>
-                <span className={`w-1.5 h-1.5 rounded-full ${status.dot} ${challengeStatus === 'live' ? 'animate-pulse' : ''}`} />
-                {status.label}
-              </span>
-            </div>
+            <HazeWidget />
             {generatedAt && (
               <span className="text-[10px] text-muted-foreground">
                 <span>Last updated: </span>

@@ -28,15 +28,25 @@ function Pm25Row({ region, value }: { region: string; value: number }) {
   );
 }
 
-export function HazeReadings({ psi, pm25 }: { psi: RegionReadings; pm25: RegionReadings }) {
-  const highestPsi = highestRegion(psi);
+export function HazeReadings({
+  psi,
+  pm25,
+  highlightRegion,
+}: {
+  psi: RegionReadings;
+  pm25: RegionReadings;
+  // Defaults to the worst region; pass a specific region (e.g. "central") to
+  // highlight that one instead, matching whatever a caller's headline shows.
+  highlightRegion?: string;
+}) {
+  const highest = highlightRegion ?? highestRegion(psi);
   return (
     <>
       <div>
         <h2 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-1">PSI (24-hour)</h2>
         <div className="divide-y divide-border">
           {REGION_ORDER.filter((r) => r in psi).map((region) => (
-            <PsiRow key={region} region={region} value={psi[region]} isHighest={region === highestPsi} />
+            <PsiRow key={region} region={region} value={psi[region]} isHighest={region === highest} />
           ))}
         </div>
       </div>

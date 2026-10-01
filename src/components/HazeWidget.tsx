@@ -1,8 +1,11 @@
 import { useState } from 'react';
+import { ChevronDown } from 'lucide-react';
 import { useHazeData } from '@/hooks/useHazeData';
 import { HazeReadings } from '@/components/HazeReadings';
 import { psiBand } from '@/lib/psiBands';
-import { highestRegion, formatTimestamp } from '@/lib/hazeFormat';
+import { formatTimestamp } from '@/lib/hazeFormat';
+
+const HEADLINE_REGION = 'central';
 
 export function HazeWidget() {
   const { data } = useHazeData();
@@ -10,9 +13,8 @@ export function HazeWidget() {
 
   if (!data) return null;
 
-  const highest = highestRegion(data.psi);
-  if (!highest) return null;
-  const value = data.psi[highest];
+  const value = data.psi[HEADLINE_REGION];
+  if (value == null) return null;
   const band = psiBand(value);
 
   return (
@@ -22,12 +24,13 @@ export function HazeWidget() {
         onClick={() => setExpanded((v) => !v)}
         className={`inline-flex items-center gap-1 text-[11px] font-medium px-2 py-1 rounded-full ring-1 ring-inset ${band.bg} ${band.text} ${band.ring} cursor-pointer`}
       >
-        PSI {value} · {band.label}
+        PSI (Central) {value} · {band.label}
+        <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${expanded ? 'rotate-180' : ''}`} />
       </button>
 
       {expanded && (
         <div className="absolute right-0 top-full mt-2 w-64 rounded-3xl bg-card border border-border shadow-md px-4 py-3 z-20 text-left">
-          <HazeReadings psi={data.psi} pm25={data.pm25} />
+          <HazeReadings psi={data.psi} pm25={data.pm25} highlightRegion={HEADLINE_REGION} />
           <p className="text-[10px] text-muted-foreground text-center mt-3">
             As of {formatTimestamp(data.officialUpdatedAt)} · Source:{' '}
             <a href="https://www.haze.gov.sg" target="_blank" rel="noreferrer" className="underline">
