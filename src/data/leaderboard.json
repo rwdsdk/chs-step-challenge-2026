@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-02T01:16:18.341Z",
+  "generatedAt": "2026-10-03T01:21:26.507Z",
   "weekLabels": [
     "Week 1",
     "Week 2",
@@ -73,7 +73,7 @@
         },
         {
           "label": "Week 3",
-          "steps": 272548,
+          "steps": 389020,
           "bonuses": [
             {
               "amount": 15000,
@@ -87,7 +87,7 @@
           "steps": 0
         }
       ],
-      "total": 1654759,
+      "total": 1771231,
       "rankChange": 0
     },
     {
@@ -117,14 +117,14 @@
         },
         {
           "label": "Week 3",
-          "steps": 182536
+          "steps": 307818
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 1460658,
+      "total": 1585940,
       "rankChange": 0
     },
     {
@@ -143,7 +143,7 @@
         },
         {
           "label": "Week 2",
-          "steps": 642754,
+          "steps": 644636,
           "bonuses": [
             {
               "amount": 15000,
@@ -159,7 +159,7 @@
         },
         {
           "label": "Week 3",
-          "steps": 218944,
+          "steps": 312229,
           "bonuses": [
             {
               "amount": 15000,
@@ -173,7 +173,7 @@
           "steps": 0
         }
       ],
-      "total": 1360198,
+      "total": 1455365,
       "rankChange": 0
     },
     {
@@ -208,7 +208,7 @@
         },
         {
           "label": "Week 3",
-          "steps": 195612,
+          "steps": 318102,
           "bonuses": [
             {
               "amount": 15000,
@@ -222,7 +222,7 @@
           "steps": 0
         }
       ],
-      "total": 1305764,
+      "total": 1428254,
       "rankChange": 0
     },
     {
@@ -245,7 +245,7 @@
         },
         {
           "label": "Week 3",
-          "steps": 148319,
+          "steps": 199310,
           "bonuses": [
             {
               "amount": 12000,
@@ -259,8 +259,8 @@
           "steps": 0
         }
       ],
-      "total": 1200930,
-      "rankChange": 1
+      "total": 1251921,
+      "rankChange": 0
     },
     {
       "teamName": "KADENS",
@@ -275,22 +275,22 @@
         },
         {
           "label": "Week 3",
-          "steps": 149131
+          "steps": 192675
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 1200588,
-      "rankChange": -1
+      "total": 1244132,
+      "rankChange": 0
     },
     {
       "teamName": "Walkinization",
       "weeklySteps": [
         {
           "label": "Week 1",
-          "steps": 458443,
+          "steps": 465390,
           "bonuses": [
             {
               "amount": 10000,
@@ -301,19 +301,19 @@
         },
         {
           "label": "Week 2",
-          "steps": 440946
+          "steps": 447611
         },
         {
           "label": "Week 3",
-          "steps": 94239
+          "steps": 143935
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 993628,
-      "rankChange": 1
+      "total": 1056936,
+      "rankChange": 0
     },
     {
       "teamName": "So High!",
@@ -335,15 +335,15 @@
         },
         {
           "label": "Week 3",
-          "steps": 68431
+          "steps": 116031
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 986275,
-      "rankChange": -1
+      "total": 1033875,
+      "rankChange": 0
     },
     {
       "teamName": "AlgoRhythm",
@@ -372,14 +372,14 @@
         },
         {
           "label": "Week 3",
-          "steps": 61689
+          "steps": 130824
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 924376,
+      "total": 993511,
       "rankChange": 0
     },
     {
@@ -395,14 +395,14 @@
         },
         {
           "label": "Week 3",
-          "steps": 105150
+          "steps": 151561
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 846447,
+      "total": 892858,
       "rankChange": 0
     },
     {
@@ -418,14 +418,14 @@
         },
         {
           "label": "Week 3",
-          "steps": 70264
+          "steps": 109869
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 746436,
+      "total": 786041,
       "rankChange": 0
     },
     {
@@ -455,7 +455,7 @@
         },
         {
           "label": "Week 3",
-          "steps": 82044,
+          "steps": 117090,
           "bonuses": [
             {
               "amount": 15000,
@@ -469,7 +469,7 @@
           "steps": 0
         }
       ],
-      "total": 651189,
+      "total": 686235,
       "rankChange": 0
     },
     {
@@ -488,7 +488,7 @@
         },
         {
           "label": "Week 2",
-          "steps": 279437,
+          "steps": 279717,
           "bonuses": [
             {
               "amount": 15000,
@@ -499,14 +499,14 @@
         },
         {
           "label": "Week 3",
-          "steps": 70596
+          "steps": 84480
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 649049,
+      "total": 663213,
       "rankChange": 0
     },
     {
@@ -536,14 +536,14 @@
         },
         {
           "label": "Week 3",
-          "steps": 58296
+          "steps": 98372
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 615627,
+      "total": 655703,
       "rankChange": 0
     },
     {
@@ -555,18 +555,18 @@
         },
         {
           "label": "Week 2",
-          "steps": 261864
+          "steps": 261959
         },
         {
           "label": "Week 3",
-          "steps": 45356
+          "steps": 71291
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 596179,
+      "total": 622209,
       "rankChange": 0
     },
     {
@@ -589,14 +589,14 @@
         },
         {
           "label": "Week 3",
-          "steps": 45020
+          "steps": 47723
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 540344,
+      "total": 543047,
       "rankChange": 0
     },
     {
@@ -608,18 +608,18 @@
         },
         {
           "label": "Week 2",
-          "steps": 189850
+          "steps": 189897
         },
         {
           "label": "Week 3",
-          "steps": 51024
+          "steps": 65155
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 403477,
+      "total": 417655,
       "rankChange": 0
     }
   ]

@@ -8,13 +8,19 @@ import { formatTimestamp } from '@/lib/hazeFormat';
 const HEADLINE_REGION = 'central';
 
 export function HazeWidget() {
-  const { data } = useHazeData();
+  const { data, loading } = useHazeData();
   const [expanded, setExpanded] = useState(false);
 
-  if (!data) return null;
-
-  const value = data.psi[HEADLINE_REGION];
-  if (value == null) return null;
+  const value = data?.psi[HEADLINE_REGION];
+  if (!data || value == null) {
+    // Keep the chip in place when there's no reading so the header doesn't
+    // shift around; it just isn't interactive since there's nothing to expand.
+    return (
+      <span className="inline-flex items-center text-[11px] font-medium px-2 py-1 rounded-full ring-1 ring-inset bg-secondary text-muted-foreground ring-border">
+        PSI {loading ? '…' : 'N.A.'}
+      </span>
+    );
+  }
   const band = psiBand(value);
 
   return (
