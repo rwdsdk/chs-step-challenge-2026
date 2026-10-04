@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-03T01:21:26.507Z",
+  "generatedAt": "2026-10-04T01:30:12.763Z",
   "weekLabels": [
     "Week 1",
     "Week 2",
@@ -57,7 +57,7 @@
         },
         {
           "label": "Week 2",
-          "steps": 761704,
+          "steps": 761789,
           "bonuses": [
             {
               "amount": 15000,
@@ -73,7 +73,7 @@
         },
         {
           "label": "Week 3",
-          "steps": 389020,
+          "steps": 590691,
           "bonuses": [
             {
               "amount": 15000,
@@ -87,7 +87,7 @@
           "steps": 0
         }
       ],
-      "total": 1771231,
+      "total": 1972987,
       "rankChange": 0
     },
     {
@@ -117,14 +117,14 @@
         },
         {
           "label": "Week 3",
-          "steps": 307818
+          "steps": 515961
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 1585940,
+      "total": 1794083,
       "rankChange": 0
     },
     {
@@ -159,7 +159,7 @@
         },
         {
           "label": "Week 3",
-          "steps": 312229,
+          "steps": 419364,
           "bonuses": [
             {
               "amount": 15000,
@@ -173,7 +173,7 @@
           "steps": 0
         }
       ],
-      "total": 1455365,
+      "total": 1562500,
       "rankChange": 0
     },
     {
@@ -208,7 +208,7 @@
         },
         {
           "label": "Week 3",
-          "steps": 318102,
+          "steps": 424465,
           "bonuses": [
             {
               "amount": 15000,
@@ -222,8 +222,31 @@
           "steps": 0
         }
       ],
-      "total": 1428254,
+      "total": 1534617,
       "rankChange": 0
+    },
+    {
+      "teamName": "KADENS",
+      "weeklySteps": [
+        {
+          "label": "Week 1",
+          "steps": 577148
+        },
+        {
+          "label": "Week 2",
+          "steps": 474309
+        },
+        {
+          "label": "Week 3",
+          "steps": 293851
+        },
+        {
+          "label": "Week 4",
+          "steps": 0
+        }
+      ],
+      "total": 1345308,
+      "rankChange": 1
     },
     {
       "teamName": "Walkie Talkies",
@@ -245,7 +268,7 @@
         },
         {
           "label": "Week 3",
-          "steps": 199310,
+          "steps": 290921,
           "bonuses": [
             {
               "amount": 12000,
@@ -259,31 +282,8 @@
           "steps": 0
         }
       ],
-      "total": 1251921,
-      "rankChange": 0
-    },
-    {
-      "teamName": "KADENS",
-      "weeklySteps": [
-        {
-          "label": "Week 1",
-          "steps": 577148
-        },
-        {
-          "label": "Week 2",
-          "steps": 474309
-        },
-        {
-          "label": "Week 3",
-          "steps": 192675
-        },
-        {
-          "label": "Week 4",
-          "steps": 0
-        }
-      ],
-      "total": 1244132,
-      "rankChange": 0
+      "total": 1343532,
+      "rankChange": -1
     },
     {
       "teamName": "Walkinization",
@@ -305,14 +305,14 @@
         },
         {
           "label": "Week 3",
-          "steps": 143935
+          "steps": 216531
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 1056936,
+      "total": 1129532,
       "rankChange": 0
     },
     {
@@ -335,14 +335,14 @@
         },
         {
           "label": "Week 3",
-          "steps": 116031
+          "steps": 168253
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 1033875,
+      "total": 1086097,
       "rankChange": 0
     },
     {
@@ -372,14 +372,14 @@
         },
         {
           "label": "Week 3",
-          "steps": 130824
+          "steps": 174991
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 993511,
+      "total": 1037678,
       "rankChange": 0
     },
     {
@@ -395,14 +395,14 @@
         },
         {
           "label": "Week 3",
-          "steps": 151561
+          "steps": 175928
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 892858,
+      "total": 917225,
       "rankChange": 0
     },
     {
@@ -418,15 +418,52 @@
         },
         {
           "label": "Week 3",
-          "steps": 109869
+          "steps": 168615
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 786041,
+      "total": 844787,
       "rankChange": 0
+    },
+    {
+      "teamName": "Cache Me If You Can",
+      "weeklySteps": [
+        {
+          "label": "Week 1",
+          "steps": 299016,
+          "bonuses": [
+            {
+              "amount": 10000,
+              "label": "Completed weekly event",
+              "kind": "event"
+            }
+          ]
+        },
+        {
+          "label": "Week 2",
+          "steps": 279969,
+          "bonuses": [
+            {
+              "amount": 15000,
+              "label": "Completed weekly event",
+              "kind": "event"
+            }
+          ]
+        },
+        {
+          "label": "Week 3",
+          "steps": 133185
+        },
+        {
+          "label": "Week 4",
+          "steps": 0
+        }
+      ],
+      "total": 712170,
+      "rankChange": 1
     },
     {
       "teamName": "ULTRAmarathoners",
@@ -455,7 +492,7 @@
         },
         {
           "label": "Week 3",
-          "steps": 117090,
+          "steps": 140278,
           "bonuses": [
             {
               "amount": 15000,
@@ -469,45 +506,8 @@
           "steps": 0
         }
       ],
-      "total": 686235,
-      "rankChange": 0
-    },
-    {
-      "teamName": "Cache Me If You Can",
-      "weeklySteps": [
-        {
-          "label": "Week 1",
-          "steps": 299016,
-          "bonuses": [
-            {
-              "amount": 10000,
-              "label": "Completed weekly event",
-              "kind": "event"
-            }
-          ]
-        },
-        {
-          "label": "Week 2",
-          "steps": 279717,
-          "bonuses": [
-            {
-              "amount": 15000,
-              "label": "Completed weekly event",
-              "kind": "event"
-            }
-          ]
-        },
-        {
-          "label": "Week 3",
-          "steps": 84480
-        },
-        {
-          "label": "Week 4",
-          "steps": 0
-        }
-      ],
-      "total": 663213,
-      "rankChange": 0
+      "total": 709423,
+      "rankChange": -1
     },
     {
       "teamName": "Sole Mates",
@@ -536,14 +536,14 @@
         },
         {
           "label": "Week 3",
-          "steps": 98372
+          "steps": 121880
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 655703,
+      "total": 679211,
       "rankChange": 0
     },
     {
@@ -559,14 +559,14 @@
         },
         {
           "label": "Week 3",
-          "steps": 71291
+          "steps": 95267
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 622209,
+      "total": 646185,
       "rankChange": 0
     },
     {
@@ -589,14 +589,14 @@
         },
         {
           "label": "Week 3",
-          "steps": 47723
+          "steps": 71912
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 543047,
+      "total": 567236,
       "rankChange": 0
     },
     {
@@ -612,14 +612,14 @@
         },
         {
           "label": "Week 3",
-          "steps": 65155
+          "steps": 92120
         },
         {
           "label": "Week 4",
           "steps": 0
         }
       ],
-      "total": 417655,
+      "total": 444620,
       "rankChange": 0
     }
   ]
