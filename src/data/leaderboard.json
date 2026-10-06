@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-05T00:40:06.173Z",
+  "generatedAt": "2026-10-06T01:41:16.412Z",
   "weekLabels": [
     "Week 1",
     "Week 2",
@@ -38,6 +38,18 @@
         "Nothing is Impossible +15,000",
         "Walkie Talkies +12,000"
       ]
+    },
+    {
+      "id": "weekly-event-week3-update-1791250988951",
+      "date": "2026-10-06T01:43:08.951Z",
+      "weekIdx": 2,
+      "kind": "event",
+      "title": "Week 3 Event: Sculpture Hunt",
+      "teams": [
+        "Wawkwawkwawk +15,000",
+        "So High! +12,000",
+        "Walkie Talkies +3,000 (15,000 total)"
+      ]
     }
   ],
   "teams": [
@@ -73,7 +85,7 @@
         },
         {
           "label": "Week 3",
-          "steps": 807279,
+          "steps": 807337,
           "bonuses": [
             {
               "amount": 15000,
@@ -84,10 +96,10 @@
         },
         {
           "label": "Week 4",
-          "steps": 0
+          "steps": 115243
         }
       ],
-      "total": 2189575,
+      "total": 2304876,
       "rankChange": 0
     },
     {
@@ -117,14 +129,21 @@
         },
         {
           "label": "Week 3",
-          "steps": 652110
+          "steps": 672293,
+          "bonuses": [
+            {
+              "amount": 15000,
+              "label": "Completed weekly event",
+              "kind": "event"
+            }
+          ]
         },
         {
           "label": "Week 4",
-          "steps": 0
+          "steps": 96703
         }
       ],
-      "total": 1930232,
+      "total": 2047118,
       "rankChange": 0
     },
     {
@@ -159,7 +178,7 @@
         },
         {
           "label": "Week 3",
-          "steps": 525747,
+          "steps": 526253,
           "bonuses": [
             {
               "amount": 15000,
@@ -170,10 +189,10 @@
         },
         {
           "label": "Week 4",
-          "steps": 0
+          "steps": 92205
         }
       ],
-      "total": 1668883,
+      "total": 1761594,
       "rankChange": 0
     },
     {
@@ -208,7 +227,7 @@
         },
         {
           "label": "Week 3",
-          "steps": 521255,
+          "steps": 522083,
           "bonuses": [
             {
               "amount": 15000,
@@ -219,10 +238,10 @@
         },
         {
           "label": "Week 4",
-          "steps": 0
+          "steps": 99866
         }
       ],
-      "total": 1631407,
+      "total": 1732101,
       "rankChange": 0
     },
     {
@@ -245,10 +264,10 @@
         },
         {
           "label": "Week 3",
-          "steps": 355807,
+          "steps": 367957,
           "bonuses": [
             {
-              "amount": 12000,
+              "amount": 15000,
               "label": "Completed weekly event",
               "kind": "event"
             }
@@ -256,11 +275,11 @@
         },
         {
           "label": "Week 4",
-          "steps": 0
+          "steps": 55991
         }
       ],
-      "total": 1408418,
-      "rankChange": 1
+      "total": 1476559,
+      "rankChange": 0
     },
     {
       "teamName": "KADENS",
@@ -275,44 +294,14 @@
         },
         {
           "label": "Week 3",
-          "steps": 355006
+          "steps": 372388
         },
         {
           "label": "Week 4",
-          "steps": 0
+          "steps": 52564
         }
       ],
-      "total": 1406463,
-      "rankChange": -1
-    },
-    {
-      "teamName": "Walkinization",
-      "weeklySteps": [
-        {
-          "label": "Week 1",
-          "steps": 465390,
-          "bonuses": [
-            {
-              "amount": 10000,
-              "label": "Completed weekly event",
-              "kind": "event"
-            }
-          ]
-        },
-        {
-          "label": "Week 2",
-          "steps": 447611
-        },
-        {
-          "label": "Week 3",
-          "steps": 258196
-        },
-        {
-          "label": "Week 4",
-          "steps": 0
-        }
-      ],
-      "total": 1171197,
+      "total": 1476409,
       "rankChange": 0
     },
     {
@@ -335,15 +324,52 @@
         },
         {
           "label": "Week 3",
-          "steps": 227002
+          "steps": 239002,
+          "bonuses": [
+            {
+              "amount": 12000,
+              "label": "Completed weekly event",
+              "kind": "event"
+            }
+          ]
         },
         {
           "label": "Week 4",
-          "steps": 0
+          "steps": 59687
         }
       ],
-      "total": 1144846,
-      "rankChange": 0
+      "total": 1216533,
+      "rankChange": 1
+    },
+    {
+      "teamName": "Walkinization",
+      "weeklySteps": [
+        {
+          "label": "Week 1",
+          "steps": 465390,
+          "bonuses": [
+            {
+              "amount": 10000,
+              "label": "Completed weekly event",
+              "kind": "event"
+            }
+          ]
+        },
+        {
+          "label": "Week 2",
+          "steps": 447611
+        },
+        {
+          "label": "Week 3",
+          "steps": 258452
+        },
+        {
+          "label": "Week 4",
+          "steps": 40182
+        }
+      ],
+      "total": 1211635,
+      "rankChange": -1
     },
     {
       "teamName": "AlgoRhythm",
@@ -372,14 +398,14 @@
         },
         {
           "label": "Week 3",
-          "steps": 226242
+          "steps": 226431
         },
         {
           "label": "Week 4",
-          "steps": 0
+          "steps": 53586
         }
       ],
-      "total": 1088929,
+      "total": 1142704,
       "rankChange": 0
     },
     {
@@ -395,14 +421,14 @@
         },
         {
           "label": "Week 3",
-          "steps": 213375
+          "steps": 229322
         },
         {
           "label": "Week 4",
-          "steps": 0
+          "steps": 32738
         }
       ],
-      "total": 954672,
+      "total": 1003357,
       "rankChange": 0
     },
     {
@@ -418,14 +444,14 @@
         },
         {
           "label": "Week 3",
-          "steps": 204773
+          "steps": 205715
         },
         {
           "label": "Week 4",
-          "steps": 0
+          "steps": 33673
         }
       ],
-      "total": 880945,
+      "total": 915560,
       "rankChange": 0
     },
     {
@@ -455,14 +481,14 @@
         },
         {
           "label": "Week 3",
-          "steps": 182527
+          "steps": 192207
         },
         {
           "label": "Week 4",
-          "steps": 0
+          "steps": 27746
         }
       ],
-      "total": 761512,
+      "total": 798938,
       "rankChange": 0
     },
     {
@@ -492,7 +518,7 @@
         },
         {
           "label": "Week 3",
-          "steps": 174393,
+          "steps": 175014,
           "bonuses": [
             {
               "amount": 15000,
@@ -503,10 +529,10 @@
         },
         {
           "label": "Week 4",
-          "steps": 0
+          "steps": 17132
         }
       ],
-      "total": 743538,
+      "total": 761291,
       "rankChange": 0
     },
     {
@@ -536,14 +562,14 @@
         },
         {
           "label": "Week 3",
-          "steps": 157700
+          "steps": 160392
         },
         {
           "label": "Week 4",
-          "steps": 0
+          "steps": 28200
         }
       ],
-      "total": 715031,
+      "total": 745923,
       "rankChange": 0
     },
     {
@@ -559,14 +585,14 @@
         },
         {
           "label": "Week 3",
-          "steps": 133374
+          "steps": 135461
         },
         {
           "label": "Week 4",
-          "steps": 0
+          "steps": 19118
         }
       ],
-      "total": 684292,
+      "total": 705497,
       "rankChange": 0
     },
     {
@@ -589,14 +615,14 @@
         },
         {
           "label": "Week 3",
-          "steps": 105954
+          "steps": 126572
         },
         {
           "label": "Week 4",
-          "steps": 0
+          "steps": 4917
         }
       ],
-      "total": 601278,
+      "total": 626813,
       "rankChange": 0
     },
     {
@@ -612,14 +638,14 @@
         },
         {
           "label": "Week 3",
-          "steps": 113899
+          "steps": 120883
         },
         {
           "label": "Week 4",
-          "steps": 0
+          "steps": 21134
         }
       ],
-      "total": 466792,
+      "total": 494910,
       "rankChange": 0
     }
   ]

@@ -6,6 +6,7 @@ import { useLeaderboard, type TeamRow } from '@/hooks/useLeaderboard';
 import { useAnnouncements } from '@/hooks/useAnnouncements';
 import { AnnouncementBanner } from '@/components/AnnouncementBanner';
 import { HazeWidget } from '@/components/HazeWidget';
+import { HazePopup } from '@/components/HazePopup';
 import { WEEK_BONUS_COLORS, bonusIcon } from '@/lib/bonusPalette';
 import { CHALLENGE_NAME, CHALLENGE_MONTH } from '@/config';
 
@@ -256,6 +257,7 @@ export default function App() {
       </header>
 
       <AnnouncementBanner announcements={unseenAnnouncements} onDismiss={dismissAnnouncement} />
+      <HazePopup />
 
       <main className="max-w-lg mx-auto px-4 pb-12 overflow-hidden">
         <Tabs.Root defaultValue="ranking" className="pt-4">
