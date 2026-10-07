@@ -1,11 +1,13 @@
 import { useEffect, useMemo, useState } from 'react';
 import { motion } from 'motion/react';
 import { useLeaderboard } from '@/hooks/useLeaderboard';
-import { HazeWidget } from '@/components/HazeWidget';
+import { HazeStatus } from '@/components/HazeStatus';
+import { useHazeData } from '@/hooks/useHazeData';
 import { CHALLENGE_NAME } from '@/config';
 
-// Mockup only — not wired to the real reveal date yet.
-const REVEAL_AT = new Date('2026-10-12T00:00:00+08:00');
+// Results reveal: 29 Oct 2026, 4pm Singapore time.
+const REVEAL_AT = new Date('2026-10-29T16:00:00+08:00');
+const UNHEALTHY_PSI = 100; // 101+ is NEA's "Unhealthy" band
 const SCRAMBLE_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 
 function useCountdown(target: Date) {
@@ -95,6 +97,10 @@ export default function TeaserPage() {
   const { data } = useLeaderboard();
   const names = useMemo(() => data.map((t) => t.teamName), [data]);
   const { days, hours, minutes, seconds } = useCountdown(REVEAL_AT);
+  const { data: haze } = useHazeData();
+  // Only mention the haze when it's actually unhealthy; otherwise this page is
+  // just about the reveal and shows nothing haze-related.
+  const showHaze = (haze?.psi.central ?? 0) > UNHEALTHY_PSI;
 
   // Aggregate-only stats — safe to show since they never reveal any team's
   // individual standing, unlike per-team totals or ranks.
@@ -115,13 +121,9 @@ export default function TeaserPage() {
       <div className="relative z-10 flex flex-col items-center px-4 text-center">
         <p className="text-sm font-medium text-white/50 mb-2">{CHALLENGE_NAME}</p>
         <h1 className="text-3xl sm:text-4xl font-bold mb-3">Results are on their way</h1>
-        <p className="text-sm text-white/60 mb-3">Rankings are sealed until the big reveal.</p>
-        <p className="text-xs text-white/50 mb-3">The leaderboard is hidden while the haze is unhealthy.</p>
-        <div className="mb-10">
-          <HazeWidget />
-        </div>
+        <p className="text-sm text-white/60 mb-10">Rankings are sealed until the reveal</p>
 
-        <div className="flex items-center justify-center gap-3 mb-10">
+        <div className={`flex items-center justify-center gap-3 ${showHaze ? 'mb-6' : 'mb-10'}`}>
           {([['Days', days], ['Hours', hours], ['Min', minutes], ['Sec', seconds]] as const).map(([label, value]) => (
             <div key={label} className="min-w-20 text-center">
               <p className="text-5xl font-bold tabular-nums">{String(value).padStart(2, '0')}</p>
@@ -129,6 +131,12 @@ export default function TeaserPage() {
             </div>
           ))}
         </div>
+
+        {showHaze && haze && (
+          <div className="mb-10">
+            <HazeStatus data={haze} />
+          </div>
+        )}
 
         <div className="flex flex-col items-center gap-1">
           <p className="text-[11px] uppercase tracking-widest text-white/40">Now tallying</p>

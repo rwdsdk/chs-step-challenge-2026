@@ -16,7 +16,8 @@ export function HazeWidget() {
     // Keep the chip in place when there's no reading so the header doesn't
     // shift around; it just isn't interactive since there's nothing to expand.
     return (
-      <span className="inline-flex items-center text-[11px] font-medium px-2 py-1 rounded-full ring-1 ring-inset bg-secondary text-muted-foreground ring-border">
+      <span className="inline-flex items-center gap-2 text-[11px] text-muted-foreground">
+        <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground/40" />
         PSI {loading ? '…' : 'N.A.'}
       </span>
     );
@@ -28,12 +29,15 @@ export function HazeWidget() {
       <button
         type="button"
         onClick={() => setExpanded((v) => !v)}
-        title="24-hour PSI, Central"
-        className={`inline-flex items-center gap-1.5 text-[11px] font-medium px-2 py-1 rounded-full ring-1 ring-inset ${band.bg} ${band.text} ${band.ring} cursor-pointer`}
+        title={`24-hour PSI, Central: ${band.label}`}
+        aria-label={`24-hour PSI ${value}, ${band.label}. Show regional readings`}
+        className="inline-flex items-center gap-2 text-[11px] text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
       >
-        <span className="opacity-70">PSI</span>
-        <span className="text-xs font-bold">{value}</span>
-        <span>{band.label}</span>
+        <span className={`w-1.5 h-1.5 rounded-full ${band.dot}`} />
+        <span>
+          PSI <span className="text-xs font-semibold text-foreground">{value}</span>
+          <span className="hidden sm:inline"> · {band.label}</span>
+        </span>
         <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${expanded ? 'rotate-180' : ''}`} />
       </button>
 

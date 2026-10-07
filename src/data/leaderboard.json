@@ -50,6 +50,19 @@
         "So High! +12,000",
         "Walkie Talkies +3,000 (15,000 total)"
       ]
+    },
+    {
+      "id": "most-improved-week3-1791359975939",
+      "date": "2026-10-07T07:59:35.939Z",
+      "weekIdx": 2,
+      "kind": "improved",
+      "title": "Most Improved: Week 3 (normalised)",
+      "amount": 15000,
+      "teams": [
+        "Nothing is Impossible",
+        "Wawkwawkwawk",
+        "The Return of Sole Survivors"
+      ]
     }
   ],
   "teams": [
@@ -85,12 +98,17 @@
         },
         {
           "label": "Week 3",
-          "steps": 807715,
+          "steps": 822715,
           "bonuses": [
             {
               "amount": 15000,
               "label": "Completed weekly event",
               "kind": "event"
+            },
+            {
+              "amount": 15000,
+              "label": "Most improved",
+              "kind": "improved"
             }
           ]
         },
@@ -99,7 +117,7 @@
           "steps": 232610
         }
       ],
-      "total": 2422621,
+      "total": 2437621,
       "rankChange": 0
     },
     {
@@ -129,12 +147,17 @@
         },
         {
           "label": "Week 3",
-          "steps": 672297,
+          "steps": 687297,
           "bonuses": [
             {
               "amount": 15000,
               "label": "Completed weekly event",
               "kind": "event"
+            },
+            {
+              "amount": 15000,
+              "label": "Most improved",
+              "kind": "improved"
             }
           ]
         },
@@ -143,7 +166,7 @@
           "steps": 185210
         }
       ],
-      "total": 2135629,
+      "total": 2150629,
       "rankChange": 0
     },
     {
@@ -193,7 +216,7 @@
         }
       ],
       "total": 1868692,
-      "rankChange": 1
+      "rankChange": 0
     },
     {
       "teamName": "The Return of Sole Survivors",
@@ -227,12 +250,17 @@
         },
         {
           "label": "Week 3",
-          "steps": 526525,
+          "steps": 541525,
           "bonuses": [
             {
               "amount": 15000,
               "label": "Completed weekly event",
               "kind": "event"
+            },
+            {
+              "amount": 15000,
+              "label": "Most improved",
+              "kind": "improved"
             }
           ]
         },
@@ -241,8 +269,8 @@
           "steps": 157679
         }
       ],
-      "total": 1827340,
-      "rankChange": -1
+      "total": 1842340,
+      "rankChange": 0
     },
     {
       "teamName": "KADENS",
@@ -265,7 +293,7 @@
         }
       ],
       "total": 1574808,
-      "rankChange": 1
+      "rankChange": 0
     },
     {
       "teamName": "Walkie Talkies",
@@ -302,7 +330,7 @@
         }
       ],
       "total": 1541320,
-      "rankChange": -1
+      "rankChange": 0
     },
     {
       "teamName": "So High!",
