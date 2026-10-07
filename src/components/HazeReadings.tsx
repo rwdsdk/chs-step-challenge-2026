@@ -19,11 +19,11 @@ function PsiRow({ region, value, isHighest }: { region: string; value: number; i
   );
 }
 
-function Pm25Row({ region, value }: { region: string; value: number }) {
+function Pm25Row({ region, value, isHighlighted }: { region: string; value: number; isHighlighted: boolean }) {
   return (
     <div className="flex items-center justify-between py-1.5">
-      <span className="text-sm text-muted-foreground">{REGION_LABELS[region] ?? region}</span>
-      <span className="text-sm font-semibold tabular-nums text-foreground">{value} µg/m³</span>
+      <span className={`text-sm ${isHighlighted ? 'font-semibold text-foreground' : 'text-muted-foreground'}`}>{REGION_LABELS[region] ?? region}</span>
+      <span className={`text-sm tabular-nums text-foreground ${isHighlighted ? 'font-bold' : 'font-semibold'}`}>{value} µg/m³</span>
     </div>
   );
 }
@@ -54,7 +54,7 @@ export function HazeReadings({
         <h2 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-1">PM2.5 (1-hour)</h2>
         <div className="divide-y divide-border">
           {REGION_ORDER.filter((r) => r in pm25).map((region) => (
-            <Pm25Row key={region} region={region} value={pm25[region]} />
+            <Pm25Row key={region} region={region} value={pm25[region]} isHighlighted={region === highlightRegion} />
           ))}
         </div>
       </div>

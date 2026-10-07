@@ -4,7 +4,7 @@ import { useHazeData } from '@/hooks/useHazeData';
 import { psiBand } from '@/lib/psiBands';
 
 const HEADLINE_REGION = 'central';
-const UNHEALTHY_ABOVE = 100; // PSI 101+ is the "Unhealthy" band
+const SHOW_ABOVE = 100; // 24-hour PSI of 101+ is the "Unhealthy" band
 const STORAGE_KEY = 'chs-step-challenge-2026:haze-popup-hidden-on';
 
 function todaySingapore(): string {
@@ -36,24 +36,31 @@ export function HazePopup() {
 
   const value = data?.psi[HEADLINE_REGION];
   const band = value != null ? psiBand(value) : null;
-  const open = !closed && value != null && value > UNHEALTHY_ABOVE;
+  const open = !closed && value != null && value > SHOW_ABOVE;
 
   return (
     <Dialog.Root open={open} onOpenChange={(next) => { if (!next) setClosed(true); }}>
       <Dialog.Portal>
         <Dialog.Backdrop className="fixed inset-0 z-30 bg-black/40 transition-opacity duration-150 data-starting-style:opacity-0 data-ending-style:opacity-0" />
         <Dialog.Popup ref={popupRef} initialFocus={popupRef} className="outline-none fixed left-1/2 top-1/2 z-40 w-[calc(100%-2rem)] max-w-sm -translate-x-1/2 -translate-y-1/2 rounded-3xl bg-card border border-border shadow-lg px-5 py-5 transition-opacity duration-150 data-starting-style:opacity-0 data-ending-style:opacity-0">
-          <Dialog.Title className="text-base font-semibold text-foreground mb-2">Haze is unhealthy today</Dialog.Title>
+          <Dialog.Title className="text-base font-semibold text-foreground mb-2">Air quality is unhealthy today</Dialog.Title>
           {band && (
-            <p className="flex items-center gap-2 mb-3">
-              <span className="text-2xl font-bold text-foreground">PSI {value}</span>
-              <span className={`inline-flex items-center text-[11px] font-medium px-2 py-0.5 rounded-full ring-1 ${band.bg} ${band.text} ${band.ring}`}>
-                {band.label}
-              </span>
-            </p>
+            <div className="mt-4 mb-4">
+              <p className="text-xs text-muted-foreground">
+                24-hour PSI (Central)
+              </p>
+              <p className="flex items-center gap-3 mt-2">
+                <span className="text-3xl font-bold text-foreground leading-none">
+                  {value}
+                </span>
+                <span className={`inline-flex items-center text-[11px] font-medium px-2 py-0.5 rounded-full ring-1 ${band.bg} ${band.text} ${band.ring}`}>
+                  {band.label}
+                </span>
+              </p>
+            </div>
           )}
           <Dialog.Description className="text-sm text-muted-foreground leading-relaxed">
-            Air quality is unhealthy today, we recommend getting your steps indoors. Try a treadmill,
+            We recommend getting your steps indoors. Try a treadmill,
             stairs, or laps around the office. Check{' '}
             <a href="https://www.haze.gov.sg" target="_blank" rel="noreferrer" className="text-foreground underline">
               haze.gov.sg
