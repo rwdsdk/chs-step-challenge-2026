@@ -10,7 +10,7 @@ const REVEAL_AT = new Date('2026-10-29T16:00:00+08:00');
 const fmtSG = (d: Date, opts: Intl.DateTimeFormatOptions) =>
   d.toLocaleString('en-GB', { timeZone: 'Asia/Singapore', ...opts });
 const REVEAL_DATE_TEXT = `${fmtSG(REVEAL_AT, { weekday: 'long', day: 'numeric', month: 'long' })}, ${fmtSG(REVEAL_AT, { hour: 'numeric', minute: '2-digit', hour12: true }).replace(' ', '')}`;
-const END_DATE_TEXT = fmtSG(new Date(CHALLENGE_END), { day: 'numeric', month: 'long' });
+const END_DATE_TEXT = `${fmtSG(new Date(CHALLENGE_END), { day: 'numeric', month: 'long' })}, 11:59pm`;
 const UNHEALTHY_PSI = 100; // 101+ is NEA's "Unhealthy" band
 const SCRAMBLE_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 
