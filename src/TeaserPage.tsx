@@ -66,7 +66,13 @@ function ScrambleSpotlight({ items }: { items: string[] }) {
     const id = setInterval(() => setItem(items[Math.floor(Math.random() * items.length)]), 5000);
     return () => clearInterval(id);
   }, [items]);
-  return <ScrambleText text={item} className="text-lg font-semibold tracking-wide" />;
+  // Reserve two lines (2 x 28px) so a longer item wrapping onto a second line
+  // doesn't grow this block and shift the whole vertically-centred page.
+  return (
+    <div className="min-h-14 flex items-start justify-center">
+      <ScrambleText text={item} className="text-lg font-semibold tracking-wide" />
+    </div>
+  );
 }
 
 function TickerRow({
