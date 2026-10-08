@@ -5,9 +5,11 @@ import { useHazeData } from '@/hooks/useHazeData';
 import { HazeReadings } from '@/components/HazeReadings';
 import { psiBand } from '@/lib/psiBands';
 import { formatTimestamp, REGION_LABELS, REGION_ORDER } from '@/lib/hazeFormat';
+import { useDarkDocument } from '@/hooks/useDarkDocument';
 import { CHALLENGE_NAME } from '@/config';
 
 export default function HazePage() {
+  useDarkDocument();
   const { data, loading, error } = useHazeData();
   const [showAll, setShowAll] = useState(false);
   const [region, setRegion] = useState('central');
@@ -17,7 +19,7 @@ export default function HazePage() {
   const band = value != null ? psiBand(value) : null;
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-linear-to-b from-slate-950 via-slate-900 to-slate-950 text-white flex items-center justify-center">
+    <div className="relative min-h-dvh w-full overflow-hidden bg-linear-to-b from-slate-950 via-slate-900 to-slate-950 text-white flex items-center justify-center">
       <motion.div
         className="pointer-events-none absolute -top-24 -left-24 w-96 h-96 rounded-full bg-amber-500/10 blur-3xl"
         animate={{ x: [0, 40, 0], y: [0, 30, 0] }}

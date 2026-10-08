@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { useLeaderboard } from '@/hooks/useLeaderboard';
 import { HazeStatus } from '@/components/HazeStatus';
 import { useHazeData } from '@/hooks/useHazeData';
+import { useDarkDocument } from '@/hooks/useDarkDocument';
 import { CHALLENGE_NAME, CHALLENGE_END } from '@/config';
 
 // Results reveal: 29 Oct 2026, 4pm Singapore time.
@@ -98,6 +99,7 @@ function TickerRow({
 }
 
 export default function TeaserPage() {
+  useDarkDocument();
   const { data } = useLeaderboard();
   const names = useMemo(() => data.map((t) => t.teamName), [data]);
   const { days, hours, minutes, seconds } = useCountdown(REVEAL_AT);
@@ -117,7 +119,7 @@ export default function TeaserPage() {
   }, [data, names]);
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-linear-to-b from-slate-950 via-slate-900 to-slate-950 text-white flex flex-col items-center justify-center">
+    <div className="relative min-h-dvh w-full overflow-hidden bg-linear-to-b from-slate-950 via-slate-900 to-slate-950 text-white flex flex-col items-center justify-center">
       <TickerRow names={names} duration={48} className="top-[12%] text-6xl text-white/6" />
       <TickerRow names={names} duration={34} reverse className="top-1/2 -translate-y-1/2 text-4xl text-white/10" />
       <TickerRow names={names} duration={55} className="top-[82%] text-6xl text-white/6" />
@@ -126,7 +128,9 @@ export default function TeaserPage() {
         <p className="text-sm font-medium text-white/50 mb-2">{CHALLENGE_NAME}</p>
         <h1 className="text-3xl sm:text-4xl font-bold mb-3">Results are on their way</h1>
         <p className="text-sm text-white/60 mb-10">
-          The challenge ends on {END_DATE_TEXT}. Rankings stay sealed until the reveal.
+          The challenge ends on {END_DATE_TEXT}.
+          <br />
+          Rankings stay hidden until the reveal.
         </p>
 
         <div className={showHaze ? 'mb-8' : 'mb-10'}>
