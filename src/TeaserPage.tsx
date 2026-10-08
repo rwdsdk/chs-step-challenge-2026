@@ -139,7 +139,7 @@ export default function TeaserPage() {
               </div>
             ))}
           </div>
-          <p className="text-xs text-white/50 mt-4">{REVEAL_DATE_TEXT} (SGT)</p>
+          <p className="text-xs text-white/50 mt-4">{REVEAL_DATE_TEXT}</p>
         </div>
 
         {showHaze && haze && (
