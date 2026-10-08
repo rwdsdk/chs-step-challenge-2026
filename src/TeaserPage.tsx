@@ -3,10 +3,14 @@ import { motion } from 'motion/react';
 import { useLeaderboard } from '@/hooks/useLeaderboard';
 import { HazeStatus } from '@/components/HazeStatus';
 import { useHazeData } from '@/hooks/useHazeData';
-import { CHALLENGE_NAME } from '@/config';
+import { CHALLENGE_NAME, CHALLENGE_END } from '@/config';
 
 // Results reveal: 29 Oct 2026, 4pm Singapore time.
 const REVEAL_AT = new Date('2026-10-29T16:00:00+08:00');
+const fmtSG = (d: Date, opts: Intl.DateTimeFormatOptions) =>
+  d.toLocaleString('en-GB', { timeZone: 'Asia/Singapore', ...opts });
+const REVEAL_DATE_TEXT = `${fmtSG(REVEAL_AT, { weekday: 'long', day: 'numeric', month: 'long' })}, ${fmtSG(REVEAL_AT, { hour: 'numeric', minute: '2-digit', hour12: true }).replace(' ', '')}`;
+const END_DATE_TEXT = fmtSG(new Date(CHALLENGE_END), { day: 'numeric', month: 'long' });
 const UNHEALTHY_PSI = 100; // 101+ is NEA's "Unhealthy" band
 const SCRAMBLE_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 
@@ -121,15 +125,21 @@ export default function TeaserPage() {
       <div className="relative z-10 flex flex-col items-center px-4 text-center">
         <p className="text-sm font-medium text-white/50 mb-2">{CHALLENGE_NAME}</p>
         <h1 className="text-3xl sm:text-4xl font-bold mb-3">Results are on their way</h1>
-        <p className="text-sm text-white/60 mb-10">Rankings are sealed until the reveal</p>
+        <p className="text-sm text-white/60 mb-10">
+          The challenge ends on {END_DATE_TEXT}. Rankings stay sealed until the reveal.
+        </p>
 
-        <div className={`flex items-center justify-center gap-3 ${showHaze ? 'mb-6' : 'mb-10'}`}>
-          {([['Days', days], ['Hours', hours], ['Min', minutes], ['Sec', seconds]] as const).map(([label, value]) => (
-            <div key={label} className="min-w-20 text-center">
-              <p className="text-5xl font-bold tabular-nums">{String(value).padStart(2, '0')}</p>
-              <p className="text-[11px] uppercase tracking-wide text-white/50 mt-1">{label}</p>
-            </div>
-          ))}
+        <div className={showHaze ? 'mb-8' : 'mb-10'}>
+          <p className="text-[11px] uppercase tracking-widest text-white/40 mb-4">Results announced in</p>
+          <div className="flex items-center justify-center gap-3">
+            {([['Days', days], ['Hours', hours], ['Min', minutes], ['Sec', seconds]] as const).map(([label, value]) => (
+              <div key={label} className="min-w-20 text-center">
+                <p className="text-5xl font-bold tabular-nums">{String(value).padStart(2, '0')}</p>
+                <p className="text-[11px] uppercase tracking-wide text-white/50 mt-1">{label}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-xs text-white/50 mt-4">{REVEAL_DATE_TEXT} (SGT)</p>
         </div>
 
         {showHaze && haze && (
